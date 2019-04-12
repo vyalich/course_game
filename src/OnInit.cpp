@@ -10,8 +10,10 @@ bool App::OnInit() {
     if((Surf_Display = SDL_SetVideoMode(SCREEN_W, SCREEN_H, 32, SDL_HWSURFACE | SDL_DOUBLEBUF)) == NULL) {
         return false;
     }
-    Draw_FillRect(Surf_Display, 0, 0, Surf_Display->w, Surf_Display->h, 0x00ff00);
-    SDL_Flip(Surf_Display);
+    if(Area::AreaControl.OnLoad("./misc/1.area") == false) {
+        return false;
+    }
+    SDL_EnableKeyRepeat(1, SDL_DEFAULT_REPEAT_INTERVAL / 3);
     atexit(SDL_Quit);
     atexit(TTF_Quit);
 

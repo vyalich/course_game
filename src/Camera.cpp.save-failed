@@ -1,0 +1,34 @@
+#include "../header/Camera.h"
+
+Camera Camera::CameraControl;
+
+Camera::Camera() {
+    X = Y = 0;
+
+    TargetX = TargetY = NULL;
+
+    TargetMode = TARGET_MODE_NORMAL;
+}
+
+void Camera::OnMove(int MoveX, int MoveY) {
+    X += MoveX;
+    Y += MoveY;
+}
+
+int Camera::GetX() {
+    return X;
+}
+
+int Camera::GetY() {
+    return Y;
+}
+
+void Camera::SetPos(int X, int Y) {
+    this->X = X;
+    this->Y = Y;
+}
+
+void Camera::SetTarget(int* X, int* Y) {
+    TargetX = X;
+    TargetY = Y;
+}

@@ -4,7 +4,9 @@
 #include <SDL_ttf.h>
 #include <SDL_draw.h>
 #include "Entity.h"
-#include "Tile.h"
+#include "Define.h"
+#include "Area.h"
+#include "Camera.h"
 
 class App
 {
@@ -28,6 +30,7 @@ class App
         void OnRender();                //отрисовка кадра
         void LevelCleanup();            //очистка уровня
         void OnCleanup();               //очистка игры
+        void OnKeyDown(SDLKey sym, SDLMod mod, Uint16 unicode);
 };
 
 #endif // APP_H

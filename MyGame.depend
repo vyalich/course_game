@@ -233,12 +233,14 @@
 1554643418 source:c:\users\dimvy\onedrive\Документы\github\course_game\src\levelcleanup.cpp
 	"../header/App.h"
 
-1555076542 c:\users\dimvy\onedrive\Документы\github\course_game\header\app.h
+1555084080 c:\users\dimvy\onedrive\Документы\github\course_game\header\app.h
 	<SDL.h>
 	<SDL_ttf.h>
 	<SDL_draw.h>
 	"Entity.h"
-	"Tile.h"
+	"Define.h"
+	"Area.h"
+	"Camera.h"
 
 1554641737 c:\users\dimvy\onedrive\Документы\github\course_game\header\beings.h
 	<SDL.h>
@@ -248,30 +250,30 @@
 1554641737 source:c:\users\dimvy\onedrive\Документы\github\course_game\src\levelinit.cpp
 	"../header/App.h"
 
-1554619612 source:c:\users\dimvy\onedrive\Документы\github\course_game\src\oncleanup.cpp
+1555084018 source:c:\users\dimvy\onedrive\Документы\github\course_game\src\oncleanup.cpp
 	"../header/App.h"
 
 1554643418 source:c:\users\dimvy\onedrive\Документы\github\course_game\src\beings.cpp
 	"../header/Beings.h"
 
-1554639550 source:c:\users\dimvy\onedrive\Документы\github\course_game\src\onevent.cpp
+1555090076 source:c:\users\dimvy\onedrive\Документы\github\course_game\src\onevent.cpp
 	"../header/App.h"
 
 1554311766 source:c:\users\dimvy\onedrive\Документы\github\course_game\src\onexecute.cpp
 
-1555076491 source:c:\users\dimvy\onedrive\Документы\github\course_game\src\oninit.cpp
+1555088946 source:c:\users\dimvy\onedrive\Документы\github\course_game\src\oninit.cpp
 	"../header/App.h"
 
 1554635815 source:c:\users\dimvy\onedrive\Документы\github\course_game\src\onloop.cpp
 	"../header/App.h"
 
-1554633361 source:c:\users\dimvy\onedrive\Документы\github\course_game\src\onrender.cpp
+1555089580 source:c:\users\dimvy\onedrive\Документы\github\course_game\src\onrender.cpp
 	"../header/App.h"
 
 1554639550 source:c:\users\dimvy\onedrive\Документы\github\course_game\src\app.cpp
 	"../header/App.h"
 
-1554641737 c:\users\dimvy\onedrive\Документы\github\course_game\header\entity.h
+1555090288 c:\users\dimvy\onedrive\Документы\github\course_game\header\entity.h
 	<SDL.h>
 	<SDL_draw.h>
 	<cmath>
@@ -301,4 +303,17 @@
 	<vector>
 	"Tile.h"
 	"Surface.h"
+
+1555081150 c:\users\dimvy\onedrive\Документы\github\course_game\header\area.h
+	"Map.h"
+
+1555090076 c:\users\dimvy\onedrive\Документы\github\course_game\header\camera.h
+	<SDL.h>
+	"Define.h"
+
+1555088946 source:c:\users\dimvy\onedrive\Документы\github\course_game\src\area.cpp
+	"../header/Area.h"
+
+1555090076 source:c:\users\dimvy\onedrive\Документы\github\course_game\src\camera.cpp
+	"../header/Camera.h"
 

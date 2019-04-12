@@ -1,5 +1,5 @@
-/tilesets/1.png
+./tile/1.bmp
 3
-./maps/1.map ./maps/1.map ./maps/1.map 
-./maps/1.map ./maps/1.map ./maps/1.map 
-./maps/1.map ./maps/1.map ./maps/1.map 
+./misc/1.map ./misc/1.map ./misc/1.map 
+./misc/1.map ./misc/1.map ./misc/1.map 
+./misc/1.map ./misc/1.map ./misc/1.map 

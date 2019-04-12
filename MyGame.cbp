@@ -37,17 +37,28 @@
 			<Add directory="C:/SDL/SDL-1.2.15/lib" />
 		</Linker>
 		<Unit filename="header/App.h" />
-		<Unit filename="header/Beings.h" />
+		<Unit filename="header/Area.h" />
+		<Unit filename="header/Camera.h" />
+		<Unit filename="header/Define.h" />
+		<Unit filename="header/Entity.h" />
+		<Unit filename="header/Map.h" />
+		<Unit filename="header/Surface.h" />
+		<Unit filename="header/Tile.h" />
 		<Unit filename="src/App.cpp" />
-		<Unit filename="src/Beings.cpp" />
+		<Unit filename="src/Area.cpp" />
+		<Unit filename="src/Camera.cpp" />
+		<Unit filename="src/Entity.cpp" />
 		<Unit filename="src/LevelCleanup.cpp" />
 		<Unit filename="src/LevelInit.cpp" />
+		<Unit filename="src/Map.cpp" />
 		<Unit filename="src/OnCleanup.cpp" />
 		<Unit filename="src/OnEvent.cpp" />
 		<Unit filename="src/OnExecute.cpp" />
 		<Unit filename="src/OnInit.cpp" />
 		<Unit filename="src/OnLoop.cpp" />
 		<Unit filename="src/OnRender.cpp" />
+		<Unit filename="src/Surface.cpp" />
+		<Unit filename="src/Tile.cpp" />
 		<Extensions>
 			<code_completion />
 			<envvars />
