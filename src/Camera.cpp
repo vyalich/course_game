@@ -8,7 +8,11 @@ Camera::Camera() {
 
 void Camera::OnMove(double MoveX, double MoveY) {
     X += MoveX;
+    if (X < 0 || X + SCREEN_W > MAP_W*TILE_SIZE)
+        X -= MoveX;
     Y += MoveY;
+    if (Y < 0 || Y + SCREEN_H> MAP_H*TILE_SIZE)
+        Y -= MoveY;
 }
 
 int Camera::GetX() {

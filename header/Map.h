@@ -9,6 +9,9 @@
 
 class Map {
     public:
+        static Map MapControl;
+
+    public:
         SDL_Surface* Surf_Tileset;      //tileset
 
     private:
@@ -21,6 +24,8 @@ class Map {
         bool OnLoad(char* File);
 
         void OnRender(SDL_Surface* Surf_Display, int MapX, int MapY);
+
+        void OnCleanup();
 };
 
 #endif // MAP_H_INCLUDED

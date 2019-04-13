@@ -10,7 +10,7 @@ bool App::OnInit() {
     if((Surf_Display = SDL_SetVideoMode(SCREEN_W, SCREEN_H, 32, SDL_HWSURFACE | SDL_DOUBLEBUF)) == NULL) {
         return false;
     }
-    if(Area::AreaControl.OnLoad("./misc/1.area") == false) {
+    if(Map::MapControl.OnLoad("./misc/1.map") == false) {
         return false;
     }
     SDL_EnableKeyRepeat(1, SDL_DEFAULT_REPEAT_INTERVAL / 3);

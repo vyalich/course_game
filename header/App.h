@@ -4,8 +4,9 @@
 #include <SDL_ttf.h>
 #include <SDL_draw.h>
 #include "Entity.h"
+#include "Player.h"
 #include "Define.h"
-#include "Area.h"
+#include "Map.h"
 #include "Camera.h"
 
 class App

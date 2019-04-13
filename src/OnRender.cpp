@@ -1,7 +1,6 @@
 #include "../header/App.h"
 
 void App::OnRender(){
-    Area::AreaControl.OnRender(Surf_Display, Camera::CameraControl.GetX(), Camera::CameraControl.GetY());
-    Hero.Draw(Surf_Display);
+    Map::MapControl.OnRender(Surf_Display, Camera::CameraControl.GetX(), Camera::CameraControl.GetY());
     SDL_Flip(Surf_Display);
 }
