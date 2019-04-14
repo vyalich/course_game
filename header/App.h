@@ -15,7 +15,12 @@ class App
         bool            _running;           //флаг выполнения игры
         bool            _level;             //флаг выполнения уровня
         //char
-        Sint8            _mouse_key;          //флаг нажатия пкм
+        bool            _mouse_left;          //флаг нажатия пкм
+        bool            _mouse_right;
+        double          Inter;
+        Uint32          start;
+        Uint32          loops;
+        Uint16          fps;
         SDL_Surface     *Surf_Display;       //поверхность экрана
         Player          Hero;
 

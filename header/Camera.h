@@ -17,6 +17,8 @@ class Camera {
     private:
         double X;
         double Y;
+        int MaxX;
+        int MaxY;
 
     public:
         Camera();
@@ -29,7 +31,7 @@ class Camera {
         int GetY();
 
     public:
-        void SetPos(int X, int Y);
+        void OnInit(int X, int Y);
 };
 
 #endif // CAMERA_H_INCLUDED

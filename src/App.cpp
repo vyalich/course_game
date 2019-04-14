@@ -4,7 +4,11 @@ App::App()
 {
     _running = true;
     _level = false;
-    _mouse_key = 0;
+    _mouse_left = false;
+    _mouse_right = false;
+    Inter = 0;
+    start = 0;
+    loops = 0;
 }
 
 App::~App()
@@ -13,26 +17,35 @@ App::~App()
 }
 
 int App::OnExecute() {
-    #define FPS 25
+    #define LPS 25
+    #define SKIP 1000/LPS
     if(OnInit() == false) {
         return -1;
     }
 
-    Uint32 start;
     SDL_Event event;
     //основной игровой цикл
+    Uint32 next_game_tick = SDL_GetTicks();
     while(_running){
         LevelInit();
         //основной игровой цикл уровня
         while(_level){
-            start = SDL_GetTicks();
-            while(SDL_PollEvent(&event)) {
-                OnEvent(&event);
+            if(loops == 0)
+                start = SDL_GetTicks();
+            /*next_game_tick = SDL_GetTicks();*/
+            while(SDL_GetTicks() > next_game_tick){
+
+                while(SDL_PollEvent(&event)) {
+                    OnEvent(&event);
+                }
+                OnLoop();
+                next_game_tick += SKIP;
+
             }
-            OnLoop();
+            Inter = double(SDL_GetTicks() - next_game_tick + SKIP)/SKIP*0;
             OnRender();
-            if(SDL_GetTicks()-start < 1000/FPS)
-                SDL_Delay(1000/FPS-(SDL_GetTicks()-start));     //ограничение в 25 фпс
+            /*if(SDL_GetTicks()-next_game_tick < 1000/FPS)
+                SDL_Delay(next_game_tick+1000/FPS-SDL_GetTicks());*/
         }
         LevelCleanup();
     }

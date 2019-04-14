@@ -2,13 +2,14 @@
 #define PLAYER_H
 
 #include <vector>
+#include <cmath>
 
 #include "Map.h"
 //#include "Animation.h"
 #include "Camera.h"
 #include "FPS.h"
 #include "Surface.h"
-
+#include <SDL_ttf.h>
 enum {
     ENTITY_TYPE_GENERIC = 0,
     ENTITY_TYPE_PLAYER
@@ -31,8 +32,11 @@ class Entity {
         SDL_Surface*    Surf_Entity;
 
     public:
-        float           MapX;
-        float           MapY;
+        double           MapX;
+        double           MapY;
+
+        double          ViewX;
+        double          ViewY;
 
         int             Width;
         int             Height;
@@ -43,9 +47,9 @@ class Entity {
         //int        Flags;
 
     protected:
-        int         Speed;
-        float       SpeedX;
-        float       SpeedY;
+        double      Speed;
+        double      SpeedX;
+        double      SpeedY;
 
     protected:
         int        Col_X;
@@ -71,8 +75,7 @@ class Entity {
 
         virtual void OnCollision(Entity* Entity);
 
-    public:
-        void     OnMove(float MoveX, float MoveY);
+        void     OnMove();
 
         void     StopMove();
 

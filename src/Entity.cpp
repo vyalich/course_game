@@ -32,20 +32,20 @@ Entity::~Entity(){
 };
 
 bool Entity::OnLoad(char* File, int Width, int Height){
-    if((Surf_Entity = Surface::OnLoad("./tile/Player.bmp")) == false) {
-        return false;
-    }
-    MapX = 320;
-    MapY = 240;
-    Camera::CameraControl.SetPos(MapX, MapY);
+
 }
 
 void Entity::OnLoop(){
 
 }
 
+void Entity::OnMove(){
+    MapX += SpeedY;
+    MapY += SpeedX;
+}
+
 void Entity::OnRender(SDL_Surface* Surf_Display){
-    Surface::OnDraw(Surf_Display, Surf_Entity, MapX, )
+    Surface::OnDraw(Surf_Display, Surf_Entity, MapX-Camera::CameraControl.GetX(), MapY-Camera::CameraControl.GetY());
 }
 
 void Entity::OnCleanup(){
@@ -55,4 +55,8 @@ void Entity::OnCleanup(){
 
 void Entity::OnCollision(Entity* Entity){
 
+}
+
+void Entity::StopMove(){
+    SpeedX = SpeedY = 0;
 }
