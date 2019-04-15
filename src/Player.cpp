@@ -31,10 +31,11 @@ void Player::SetSpeed(int DestX, int DestY, SDL_Surface *Surf_Display){
 }
 
 void Player::OnLoop(){
-    MapX += SpeedX;
-    MapY += SpeedY;
+
     ViewX = MapX;
     ViewY = MapY;
+    MapX += SpeedX;
+    MapY += SpeedY;
 }
 
 void Player::OnRender(SDL_Surface* Surf_Display, Uint32 Inter){
