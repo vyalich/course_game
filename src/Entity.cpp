@@ -46,49 +46,64 @@ void Entity::OnLoop(){
 void Entity::OnMove(){
     MapX += SpeedX;
     MapY += SpeedY;
+    PosValidTile();
+}
+
+void Entity::PosValidTile(){
+    int ID = (int)MapX/TILE_SIZE + (int)MapY/TILE_SIZE*MAP_W;
 
     int _col_x = 0;
     int _col_y = 0;
-    int ID = (int)MapX/TILE_SIZE + (int)MapY/TILE_SIZE*MAP_W;
     int x = (int)MapX/TILE_SIZE*TILE_SIZE;
     int y = (int)MapY/TILE_SIZE*TILE_SIZE;
-    int MaxY = MapY + Height;
-    int MaxX = MapX + Width;
-    int dX = 0;
-    int dY = 0;
+    int dx = 0;
+    int dy = 0;
 
-    for(int i = 0; i < 3; i++){
-        for(int j = 0; j < 3; j++){
-            if(Map::MapControl.GetTileType(ID+i*MAP_W+j)){
-                if(!(i % 2)){
-                    _col_y++;
-
-                }
-                if(i == 1)
-                    _col_x = 3;
-                if(!(j % 2)){
-                    _col_x++;
-
-                }
-                if(j == 1)
-                    _col_y = 3;
-
-            }
-            x += TILE_SIZE;
-        }
-        x = (int)MapX/TILE_SIZE*TILE_SIZE;
+    int i = 0, j = 0;
+    //проверка коллизии по У
+    if(SpeedY > 0){
+        i = 2;
+    }
+    else{
+        i = 0;
         y += TILE_SIZE;
     }
-    /*if(_col_x == 1 && _col_y == 1){
-
-    }*/
-    if(_col_x > 2){
-        MapX = ((SpeedX<0)?ID+1 : ID) % MAP_W * TILE_SIZE;
-        SpeedX = 0;
+    for(j = 0; j < 3; j++){
+        if(Map::MapControl.GetTileType(ID+i*MAP_W+j)){
+            dy = MapY - y;
+            _col_y++;
+        }
     }
-    if(_col_y > 2){
-        MapY = ((SpeedY<0)?ID+MAP_W : ID) / MAP_W * TILE_SIZE;
-        SpeedY = 0;
+    //проверка коллизии по Х
+    if(SpeedX > 0){
+        j = 2;
+    }
+    else{
+        j = 0;
+        x += TILE_SIZE;
+    }
+    for(i = 0; i < 3; i++){
+        if(Map::MapControl.GetTileType(ID+i*MAP_W+j)){
+            dx = MapX - x;
+            _col_x++;
+        }
+    }
+
+    //отталкивание от тайлов
+    if(_col_x == 0 && _col_y == 1)
+        MapY -= dy;
+    else if(_col_x == 1 && _col_y == 0)
+        MapX -= dx;
+    else if(_col_x == 1 && _col_y == 1)
+        if(abs(dx)<abs(dy))
+            MapX -= dx;
+        else
+            MapY -= dy;
+    else{
+        if(_col_x > 1)
+            MapX -= dx;
+        if(_col_y > 1)
+            MapY -= dy;
     }
 }
 
