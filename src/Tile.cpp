@@ -2,5 +2,5 @@
 
 Tile::Tile() {
     TileID = 0;
-    TypeID = TILE_TYPE_NONE;
+    TypeID = TILE_TYPE_NORMAL;
 }

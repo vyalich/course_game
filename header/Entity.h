@@ -4,6 +4,7 @@
 #include <vector>
 #include <cmath>
 
+#include "Tile.h"
 #include "Map.h"
 //#include "Animation.h"
 #include "Camera.h"
@@ -31,7 +32,8 @@ class Entity {
 
         SDL_Surface*    Surf_Entity;
 
-    public:
+    protected:
+        int              FirstID;
         double           MapX;
         double           MapY;
 

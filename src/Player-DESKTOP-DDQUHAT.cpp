@@ -10,10 +10,9 @@ bool Player::OnLoad(char* File, int width, int height){
     }
     Width = width;
     Height = height;
-    Speed = 5;
+    Speed = 10;
     MapX = (SCREEN_W>>1)-(Width>>1);
     MapY = (SCREEN_H>>1)-(Height>>1);
-    FirstID = MapX/TILE_SIZE + MapY/TILE_SIZE*MAP_W;
     Camera::CameraControl.OnInit(MapX-(SCREEN_W>>1)+(Width>>1), MapY-(SCREEN_H>>1)+(Height>>1));
 }
 
@@ -35,35 +34,14 @@ void Player::OnLoop(){
 
     ViewX = MapX;
     ViewY = MapY;
-    OnMove();
+    MapX += SpeedX;
+    MapY += SpeedY;
 }
 
 void Player::OnRender(SDL_Surface* Surf_Display, Uint32 Inter){
     ViewX += SpeedX * Inter;
     ViewY += SpeedY * Inter;
-    /*.........................
-    TTF_Init();
-    atexit(TTF_Quit);
-
-    SDL_Surface *message;
-    TTF_Font *font;
-    SDL_Rect dest = {.x = 100, .y = 100};
-    SDL_Color textColor = {.r = 0, .g = 0, .b = 0};
-    char str[100];
-    sprintf(str, "%lf", Inter);
-    font = TTF_OpenFont("CharisSILR.ttf", 20);
-    message = TTF_RenderText_Solid( font, str, textColor );
-    if(message){
-        SDL_BlitSurface(message, NULL, Surf_Display, &dest);
-        SDL_FreeSurface(message);
-        message = NULL;
-    }
-    TTF_CloseFont(font);
-    /*.........................*/
-    /*Camera::CameraControl.OnMove(ViewX - (SCREEN_W>>1) + (Width>>1), ViewY - (SCREEN_H>>1) + (Height>>1));
+    Camera::CameraControl.OnMove(ViewX - (SCREEN_W>>1) + (Width>>1), ViewY - (SCREEN_H>>1) + (Height>>1));
     Surface::OnDraw(Surf_Display, Surf_Entity, ViewX - Camera::CameraControl.GetX(),
-                    ViewY - Camera::CameraControl.GetY());*/
-    Camera::CameraControl.OnMove(MapX - (SCREEN_W>>1) + (Width>>1), MapY - (SCREEN_H>>1) + (Height>>1));
-    Surface::OnDraw(Surf_Display, Surf_Entity, MapX - Camera::CameraControl.GetX(),
-                    MapY - Camera::CameraControl.GetY());
+                    ViewY - Camera::CameraControl.GetY());
 }

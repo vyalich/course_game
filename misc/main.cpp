@@ -82,7 +82,7 @@ int main()
     //запись карты в файл
     for(int i = 0; i < MAP_H; i++){
         for(int j = 0; j < MAP_W; j++){
-                fprintf(MapFile, "%d:1 ", Map[i*MAP_W + j]);
+                fprintf(MapFile, "%d:%d ", Map[i*MAP_W + j], Map[i*MAP_W + j]);
             }
         fprintf(MapFile, "\n");
     }

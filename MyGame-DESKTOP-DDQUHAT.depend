@@ -20,7 +20,7 @@
 	<SDL_draw.h>
 	"Beings.h"
 
-1550482586 c:\sdl\sdl-1.2.15\include\sdl\sdl.h
+1325738639 c:\sdl\sdl-1.2.15\include\sdl\sdl.h
 	"SDL_main.h"
 	"SDL_stdinc.h"
 	"SDL_audio.h"
@@ -39,14 +39,14 @@
 	"begin_code.h"
 	"close_code.h"
 
-1550482584 c:\sdl\sdl-1.2.15\include\sdl\sdl_main.h
+1325738639 c:\sdl\sdl-1.2.15\include\sdl\sdl_main.h
 	"SDL_stdinc.h"
 	"begin_code.h"
 	"close_code.h"
 	"begin_code.h"
 	"close_code.h"
 
-1550482584 c:\sdl\sdl-1.2.15\include\sdl\sdl_stdinc.h
+1325738639 c:\sdl\sdl-1.2.15\include\sdl\sdl_stdinc.h
 	"SDL_config.h"
 	<sys/types.h>
 	<stdio.h>
@@ -72,7 +72,7 @@
 	<stdlib.h>
 	"close_code.h"
 
-1550482586 c:\sdl\sdl-1.2.15\include\sdl\sdl_config.h
+1326110987 c:\sdl\sdl-1.2.15\include\sdl\sdl_config.h
 	"SDL_platform.h"
 	"SDL_config_dreamcast.h"
 	"SDL_config_macos.h"
@@ -82,16 +82,16 @@
 	"SDL_config_os2.h"
 	"SDL_config_minimal.h"
 
-1550482584 c:\sdl\sdl-1.2.15\include\sdl\sdl_platform.h
+1325738639 c:\sdl\sdl-1.2.15\include\sdl\sdl_platform.h
 
-1550482586 c:\sdl\sdl-1.2.15\include\sdl\sdl_config_win32.h
+1326110994 c:\sdl\sdl-1.2.15\include\sdl\sdl_config_win32.h
 	"SDL_platform.h"
 
-1550482586 c:\sdl\sdl-1.2.15\include\sdl\begin_code.h
+1326111000 c:\sdl\sdl-1.2.15\include\sdl\begin_code.h
 
-1550482586 c:\sdl\sdl-1.2.15\include\sdl\close_code.h
+1325738639 c:\sdl\sdl-1.2.15\include\sdl\close_code.h
 
-1550482586 c:\sdl\sdl-1.2.15\include\sdl\sdl_audio.h
+1325738639 c:\sdl\sdl-1.2.15\include\sdl\sdl_audio.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"SDL_endian.h"
@@ -101,24 +101,24 @@
 	"begin_code.h"
 	"close_code.h"
 
-1550482586 c:\sdl\sdl-1.2.15\include\sdl\sdl_error.h
+1325738639 c:\sdl\sdl-1.2.15\include\sdl\sdl_error.h
 	"SDL_stdinc.h"
 	"begin_code.h"
 	"close_code.h"
 
-1550482586 c:\sdl\sdl-1.2.15\include\sdl\sdl_endian.h
+1325738639 c:\sdl\sdl-1.2.15\include\sdl\sdl_endian.h
 	"SDL_stdinc.h"
 	<endian.h>
 	"begin_code.h"
 	"close_code.h"
 
-1550482584 c:\sdl\sdl-1.2.15\include\sdl\sdl_mutex.h
+1325738639 c:\sdl\sdl-1.2.15\include\sdl\sdl_mutex.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"begin_code.h"
 	"close_code.h"
 
-1550482584 c:\sdl\sdl-1.2.15\include\sdl\sdl_thread.h
+1325738639 c:\sdl\sdl-1.2.15\include\sdl\sdl_thread.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"SDL_mutex.h"
@@ -126,24 +126,24 @@
 	<process.h>
 	"close_code.h"
 
-1550482584 c:\sdl\sdl-1.2.15\include\sdl\sdl_rwops.h
+1325738639 c:\sdl\sdl-1.2.15\include\sdl\sdl_rwops.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"begin_code.h"
 	"close_code.h"
 
-1550482586 c:\sdl\sdl-1.2.15\include\sdl\sdl_cdrom.h
+1325738639 c:\sdl\sdl-1.2.15\include\sdl\sdl_cdrom.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"begin_code.h"
 	"close_code.h"
 
-1550482586 c:\sdl\sdl-1.2.15\include\sdl\sdl_cpuinfo.h
+1325738639 c:\sdl\sdl-1.2.15\include\sdl\sdl_cpuinfo.h
 	"SDL_stdinc.h"
 	"begin_code.h"
 	"close_code.h"
 
-1550482586 c:\sdl\sdl-1.2.15\include\sdl\sdl_events.h
+1325738639 c:\sdl\sdl-1.2.15\include\sdl\sdl_events.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"SDL_active.h"
@@ -154,68 +154,68 @@
 	"begin_code.h"
 	"close_code.h"
 
-1550482586 c:\sdl\sdl-1.2.15\include\sdl\sdl_active.h
+1325738639 c:\sdl\sdl-1.2.15\include\sdl\sdl_active.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"begin_code.h"
 	"close_code.h"
 
-1550482584 c:\sdl\sdl-1.2.15\include\sdl\sdl_keyboard.h
+1325738639 c:\sdl\sdl-1.2.15\include\sdl\sdl_keyboard.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"SDL_keysym.h"
 	"begin_code.h"
 	"close_code.h"
 
-1550482584 c:\sdl\sdl-1.2.15\include\sdl\sdl_keysym.h
+1325738639 c:\sdl\sdl-1.2.15\include\sdl\sdl_keysym.h
 
-1550482584 c:\sdl\sdl-1.2.15\include\sdl\sdl_mouse.h
+1325738639 c:\sdl\sdl-1.2.15\include\sdl\sdl_mouse.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"SDL_video.h"
 	"begin_code.h"
 	"close_code.h"
 
-1550482584 c:\sdl\sdl-1.2.15\include\sdl\sdl_video.h
+1325738639 c:\sdl\sdl-1.2.15\include\sdl\sdl_video.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"SDL_rwops.h"
 	"begin_code.h"
 	"close_code.h"
 
-1550482586 c:\sdl\sdl-1.2.15\include\sdl\sdl_joystick.h
+1325738639 c:\sdl\sdl-1.2.15\include\sdl\sdl_joystick.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"begin_code.h"
 	"close_code.h"
 
-1550482584 c:\sdl\sdl-1.2.15\include\sdl\sdl_quit.h
+1325738639 c:\sdl\sdl-1.2.15\include\sdl\sdl_quit.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 
-1550482584 c:\sdl\sdl-1.2.15\include\sdl\sdl_loadso.h
-	"SDL_stdinc.h"
-	"SDL_error.h"
-	"begin_code.h"
-	"close_code.h"
-
-1550482584 c:\sdl\sdl-1.2.15\include\sdl\sdl_timer.h
+1325738639 c:\sdl\sdl-1.2.15\include\sdl\sdl_loadso.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"begin_code.h"
 	"close_code.h"
 
-1550482584 c:\sdl\sdl-1.2.15\include\sdl\sdl_version.h
+1325738639 c:\sdl\sdl-1.2.15\include\sdl\sdl_timer.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"begin_code.h"
+	"close_code.h"
+
+1325738639 c:\sdl\sdl-1.2.15\include\sdl\sdl_version.h
 	"SDL_stdinc.h"
 	"begin_code.h"
 	"close_code.h"
 
-1550482584 c:\sdl\sdl-1.2.15\include\sdl\sdl_ttf.h
+1549434393 c:\sdl\sdl-1.2.15\include\sdl\sdl_ttf.h
 	"SDL.h"
 	"begin_code.h"
 	"close_code.h"
 
-1550482586 c:\sdl\sdl-1.2.15\include\sdl\sdl_draw.h
+1029325208 c:\sdl\sdl-1.2.15\include\sdl\sdl_draw.h
 	"SDL.h"
 	"begin_code.h"
 	"close_code.h"
@@ -274,25 +274,24 @@
 1555344780 source:c:\users\dimvy\onedrive\Документы\github\course_game\src\app.cpp
 	"../header/App.h"
 
-1555437596 c:\users\dimvy\onedrive\Документы\github\course_game\header\entity.h
+1555271889 c:\users\dimvy\onedrive\Документы\github\course_game\header\entity.h
 	<vector>
 	<cmath>
-	"Tile.h"
 	"Map.h"
 	"Camera.h"
 	"FPS.h"
 	"Surface.h"
 	<SDL_ttf.h>
 
-1555523299 source:c:\users\dimvy\onedrive\Документы\github\course_game\src\entity.cpp
+1555256036 source:c:\users\dimvy\onedrive\Документы\github\course_game\src\entity.cpp
 	"../header/Entity.h"
 
-1555437597 c:\users\dimvy\onedrive\Документы\github\course_game\header\tile.h
+1555076527 c:\users\dimvy\onedrive\Документы\github\course_game\header\tile.h
 	"Define.h"
 
-1555365793 c:\users\dimvy\onedrive\Документы\github\course_game\header\define.h
+1555308591 c:\users\dimvy\onedrive\Документы\github\course_game\header\define.h
 
-1555439297 source:c:\users\dimvy\onedrive\Документы\github\course_game\src\tile.cpp
+1555076517 source:c:\users\dimvy\onedrive\Документы\github\course_game\src\tile.cpp
 	"../header/Tile.h"
 
 1555077445 source:c:\users\dimvy\onedrive\Документы\github\course_game\src\surface.cpp
@@ -301,10 +300,10 @@
 1555077430 c:\users\dimvy\onedrive\Документы\github\course_game\header\surface.h
 	<SDL.h>
 
-1555441084 source:c:\users\dimvy\onedrive\Документы\github\course_game\src\map.cpp
+1555270447 source:c:\users\dimvy\onedrive\Документы\github\course_game\src\map.cpp
 	"../header/Map.h"
 
-1555437187 c:\users\dimvy\onedrive\Документы\github\course_game\header\map.h
+1555144136 c:\users\dimvy\onedrive\Документы\github\course_game\header\map.h
 	<SDL.h>
 	<vector>
 	"Tile.h"
@@ -328,6 +327,6 @@
 1555271213 c:\users\dimvy\onedrive\Документы\github\course_game\header\player.h
 	"Entity.h"
 
-1555443467 source:c:\users\dimvy\onedrive\Документы\github\course_game\src\player.cpp
+1555309212 source:c:\users\dimvy\onedrive\Документы\github\course_game\src\player.cpp
 	"../header/Player.h"
 

@@ -72,3 +72,7 @@ void Map::OnCleanup() {
     TileList.clear();
     }
 }
+
+int Map::GetTileType(int ID){
+    return TileList[ID].TypeID;
+}

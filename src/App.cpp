@@ -42,7 +42,7 @@ int App::OnExecute() {
                 next_game_tick += SKIP;
 
             }
-            Inter = double(SDL_GetTicks() - next_game_tick + SKIP)/SKIP*500;
+            Inter = double(SDL_GetTicks() - next_game_tick + SKIP)/SKIP*1000;
             OnRender();
             /*if(SDL_GetTicks()-next_game_tick < 1000/FPS)
                 SDL_Delay(next_game_tick+1000/FPS-SDL_GetTicks());*/
