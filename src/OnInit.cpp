@@ -14,7 +14,7 @@ bool App::OnInit() {
         return false;
     }
     Hero.OnLoad("./tile/player.bmp", 32, 32);
-    SDL_EnableKeyRepeat(1, SDL_DEFAULT_REPEAT_INTERVAL / 3);
+    //SDL_EnableKeyRepeat(1, SDL_DEFAULT_REPEAT_INTERVAL / 3);
     Draw_FillRect(Surf_Display, 0, 0, SCREEN_W, SCREEN_H, 0xffffff);
     atexit(SDL_Quit);
     atexit(TTF_Quit);

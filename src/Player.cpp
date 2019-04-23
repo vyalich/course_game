@@ -60,10 +60,10 @@ void Player::OnRender(SDL_Surface* Surf_Display, Uint32 Inter){
     }
     TTF_CloseFont(font);
     /*.........................*/
-    /*Camera::CameraControl.OnMove(ViewX - (SCREEN_W>>1) + (Width>>1), ViewY - (SCREEN_H>>1) + (Height>>1));
+    Camera::CameraControl.OnMove(ViewX - (SCREEN_W>>1) + (Width>>1), ViewY - (SCREEN_H>>1) + (Height>>1));
     Surface::OnDraw(Surf_Display, Surf_Entity, ViewX - Camera::CameraControl.GetX(),
-                    ViewY - Camera::CameraControl.GetY());*/
-    Camera::CameraControl.OnMove(MapX - (SCREEN_W>>1) + (Width>>1), MapY - (SCREEN_H>>1) + (Height>>1));
+                    ViewY - Camera::CameraControl.GetY());
+    /*Camera::CameraControl.OnMove(MapX - (SCREEN_W>>1) + (Width>>1), MapY - (SCREEN_H>>1) + (Height>>1));
     Surface::OnDraw(Surf_Display, Surf_Entity, MapX - Camera::CameraControl.GetX(),
-                    MapY - Camera::CameraControl.GetY());
+                    MapY - Camera::CameraControl.GetY());*/
 }

@@ -262,7 +262,7 @@
 
 1554311766 source:c:\users\dimvy\onedrive\Документы\github\course_game\src\onexecute.cpp
 
-1555706329 source:c:\users\dimvy\onedrive\Документы\github\course_game\src\oninit.cpp
+1555530783 source:c:\users\dimvy\onedrive\Документы\github\course_game\src\oninit.cpp
 	"../header/App.h"
 
 1555223098 source:c:\users\dimvy\onedrive\Документы\github\course_game\src\onloop.cpp
@@ -271,7 +271,7 @@
 1555274361 source:c:\users\dimvy\onedrive\Документы\github\course_game\src\onrender.cpp
 	"../header/App.h"
 
-1555708626 source:c:\users\dimvy\onedrive\Документы\github\course_game\src\app.cpp
+1555344780 source:c:\users\dimvy\onedrive\Документы\github\course_game\src\app.cpp
 	"../header/App.h"
 
 1555530650 c:\users\dimvy\onedrive\Документы\github\course_game\header\entity.h
@@ -284,7 +284,7 @@
 	"Surface.h"
 	<SDL_ttf.h>
 
-1555772698 source:c:\users\dimvy\onedrive\Документы\github\course_game\src\entity.cpp
+1555589353 source:c:\users\dimvy\onedrive\Документы\github\course_game\src\entity.cpp
 	"../header/Entity.h"
 
 1555437597 c:\users\dimvy\onedrive\Документы\github\course_game\header\tile.h
@@ -328,6 +328,6 @@
 1555271213 c:\users\dimvy\onedrive\Документы\github\course_game\header\player.h
 	"Entity.h"
 
-1555772811 source:c:\users\dimvy\onedrive\Документы\github\course_game\src\player.cpp
+1555589503 source:c:\users\dimvy\onedrive\Документы\github\course_game\src\player.cpp
 	"../header/Player.h"
 

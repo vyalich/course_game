@@ -44,9 +44,11 @@ void Entity::OnLoop(){
 }
 
 void Entity::OnMove(){
-    MapX += SpeedX;
-    MapY += SpeedY;
-    PosValidTile();
+    if(SpeedX || SpeedY){
+        MapX += SpeedX;
+        MapY += SpeedY;
+        PosValidTile();
+    }
 }
 
 void Entity::PosValidTile(){
@@ -54,6 +56,8 @@ void Entity::PosValidTile(){
 
     int _col_x = 0;
     int _col_y = 0;
+    int _last_x = 0;
+    int _last_y = 0;
     int x = (int)MapX/TILE_SIZE*TILE_SIZE;
     int y = (int)MapY/TILE_SIZE*TILE_SIZE;
     int dx = 0;
@@ -72,6 +76,7 @@ void Entity::PosValidTile(){
         if(Map::MapControl.GetTileType(ID+i*MAP_W+j)){
             dy = MapY - y;
             _col_y++;
+            _last_y = ID+i*MAP_W+j;
         }
     }
     //проверка коллизии по Х
@@ -86,6 +91,7 @@ void Entity::PosValidTile(){
         if(Map::MapControl.GetTileType(ID+i*MAP_W+j)){
             dx = MapX - x;
             _col_x++;
+            _last_x = ID+i*MAP_W+j;
         }
     }
 
@@ -95,10 +101,15 @@ void Entity::PosValidTile(){
     else if(_col_x == 1 && _col_y == 0)
         MapX -= dx;
     else if(_col_x == 1 && _col_y == 1)
-        if(abs(dx)<abs(dy))
+        if(_last_x == _last_y)
+            if(abs(dx)<abs(dy))
+                MapX -= dx;
+            else
+                MapY -= dy;
+        else{
             MapX -= dx;
-        else
             MapY -= dy;
+        }
     else{
         if(_col_x > 1)
             MapX -= dx;

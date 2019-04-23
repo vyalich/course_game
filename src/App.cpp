@@ -25,14 +25,13 @@ int App::OnExecute() {
 
     SDL_Event event;
     //основной игровой цикл
-    Uint32 next_game_tick = SDL_GetTicks();
     while(_running){
         LevelInit();
+        Uint32 next_game_tick = SDL_GetTicks();
         //основной игровой цикл уровня
         while(_level){
             if(loops == 0)
                 start = SDL_GetTicks();
-            /*next_game_tick = SDL_GetTicks();*/
             while(SDL_GetTicks() > next_game_tick){
 
                 while(SDL_PollEvent(&event)) {
@@ -42,10 +41,8 @@ int App::OnExecute() {
                 next_game_tick += SKIP;
 
             }
-            Inter = double(SDL_GetTicks() - next_game_tick + SKIP)/SKIP*1000;
+            Inter = double(SDL_GetTicks() - next_game_tick + SKIP)/SKIP*500;
             OnRender();
-            /*if(SDL_GetTicks()-next_game_tick < 1000/FPS)
-                SDL_Delay(next_game_tick+1000/FPS-SDL_GetTicks());*/
         }
         LevelCleanup();
     }
