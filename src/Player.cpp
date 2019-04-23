@@ -10,14 +10,13 @@ bool Player::OnLoad(char* File, int width, int height){
     }
     Width = width;
     Height = height;
-    Speed = 7;
-    MapX = (SCREEN_W>>1)-(Width>>1);
-    MapY = (SCREEN_H>>1)-(Height>>1);
-    LastID = (int)MapX/TILE_SIZE + (int)MapY/TILE_SIZE*MAP_W;
+    Speed = 15;
+    MapX = (MAP_W*TILE_SIZE>>1)-(Width>>1);
+    MapY = (MAP_H*TILE_SIZE>>1)-(Height>>1);
     Camera::CameraControl.OnInit(MapX-(SCREEN_W>>1)+(Width>>1), MapY-(SCREEN_H>>1)+(Height>>1));
 }
 
-void Player::SetSpeed(int DestX, int DestY, SDL_Surface *Surf_Display){
+void Player::SetSpeed(int DestX, int DestY){
     float ScrX = MapX - Camera::CameraControl.GetX();
     float ScrY = MapY - Camera::CameraControl.GetY();
     if(DestY>=ScrY && DestY<=ScrY+Height && DestX>=ScrX && DestX<=ScrX+Width){

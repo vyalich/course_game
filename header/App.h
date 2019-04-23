@@ -3,11 +3,14 @@
 #include <SDL.h>
 #include <SDL_ttf.h>
 #include <SDL_draw.h>
+#include <ctime>
+#include <cstdlib>
 #include "Entity.h"
 #include "Player.h"
 #include "Define.h"
 #include "Map.h"
 #include "Camera.h"
+#include "Enemy.h"
 
 class App
 {

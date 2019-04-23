@@ -51,6 +51,7 @@ int App::OnExecute() {
 }
 
 int main(int argc, char* argv[]){
+    srand(time(0));
     App Game;
     return Game.OnExecute();
 }

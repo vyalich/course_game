@@ -9,4 +9,6 @@
 #define SCREEN_W    1280
 #define SCREEN_H    720
 
+#define ENEMIES     100
+
 #endif // DEFINE_H_INCLUDED

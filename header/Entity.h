@@ -33,7 +33,6 @@ class Entity {
         SDL_Surface*    Surf_Entity;
 
     protected:
-        int              LastID;
         double           MapX;
         double           MapY;
 
@@ -53,18 +52,12 @@ class Entity {
         double      SpeedX;
         double      SpeedY;
 
-    protected:
-        int        Col_X;
-        int        Col_Y;
-        int        Col_Width;
-        int        Col_Height;
 
     public:
         Entity();
 
         virtual ~Entity();
 
-    public:
         virtual bool OnLoad(char* File, int Width, int Height);
 
         virtual void OnLoop();
@@ -75,21 +68,16 @@ class Entity {
 
         //virtual void OnAnimate();
 
-        virtual void OnCollision(Entity* Entity);
-
-        void     OnMove();
-
         void     StopMove();
 
-    public:
-        bool     Collides(int oX, int oY, int oW, int oH);
+        void    OnMove();
 
     private:
-        void     PosValid();
+        void    PosValid();
 
-        void     PosValidTile();
+        void    PosValidTile();
 
-        bool     PosValidEntity(Entity* Entity, int NewX, int NewY);
+        bool    PosValidEntity(Entity* Entity, int NewX, int NewY);
 };
 
 /*class EntityCol {

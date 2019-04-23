@@ -3,6 +3,7 @@
 
 #include "Entity.h"
 
+
 class Player: public Entity{
     private:
         int intellect;
@@ -10,8 +11,10 @@ class Player: public Entity{
         Player();
         bool OnLoad(char* File, int Width, int Height);
         void OnLoop();
-        void SetSpeed(int X, int Y,SDL_Surface *Surf_Display);
+        void SetSpeed(int X, int Y);
         void OnRender(SDL_Surface *Surf_Display, Uint32 Inter);
+        inline double GetMapX() {return MapX;};
+        inline double GetMapY() {return MapY;};
 };
 
 #endif // PLAYER_H_INCLUDED

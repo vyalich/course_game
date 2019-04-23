@@ -7,7 +7,6 @@ Entity::Entity(){
 
     MapX = 0;
     MapY = 0;
-    LastID = 0;
 
     Width     = 0;
     Height     = 0;
@@ -20,12 +19,6 @@ Entity::Entity(){
     Speed  = 0;
     SpeedX = 0;
     SpeedY = 0;
-
-    Col_X = 0;
-    Col_Y = 0;
-
-    Col_Width  = 0;
-    Col_Height = 0;
 }
 
 Entity::~Entity(){
@@ -128,10 +121,6 @@ void Entity::OnRender(SDL_Surface* Surf_Display){
 void Entity::OnCleanup(){
     if(Surf_Entity)
         SDL_FreeSurface(Surf_Entity);
-}
-
-void Entity::OnCollision(Entity* Entity){
-
 }
 
 void Entity::StopMove(){

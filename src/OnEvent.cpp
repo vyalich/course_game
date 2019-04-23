@@ -9,7 +9,7 @@ void App::OnEvent(SDL_Event *event){
         case SDL_MOUSEBUTTONDOWN:
             if(event->button.button == SDL_BUTTON_RIGHT){
                 _mouse_right = true;
-                Hero.SetSpeed(event->button.x, event->button.y, Surf_Display);
+                Hero.SetSpeed(event->button.x, event->button.y);
             }
             break;
         case SDL_MOUSEBUTTONUP:
@@ -20,7 +20,7 @@ void App::OnEvent(SDL_Event *event){
             break;
         case SDL_MOUSEMOTION:
             if(_mouse_right){
-                Hero.SetSpeed(event->motion.x, event->motion.y, Surf_Display);
+                Hero.SetSpeed(event->motion.x, event->motion.y);
             }
             break;
         case SDL_KEYDOWN:
