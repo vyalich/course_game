@@ -10,10 +10,10 @@ bool Player::OnLoad(char* File, int width, int height){
     }
     Width = width;
     Height = height;
-    Speed = 5;
+    Speed = 7;
     MapX = (SCREEN_W>>1)-(Width>>1);
     MapY = (SCREEN_H>>1)-(Height>>1);
-    FirstID = MapX/TILE_SIZE + MapY/TILE_SIZE*MAP_W;
+    LastID = (int)MapX/TILE_SIZE + (int)MapY/TILE_SIZE*MAP_W;
     Camera::CameraControl.OnInit(MapX-(SCREEN_W>>1)+(Width>>1), MapY-(SCREEN_H>>1)+(Height>>1));
 }
 

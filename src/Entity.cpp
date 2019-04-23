@@ -7,7 +7,7 @@ Entity::Entity(){
 
     MapX = 0;
     MapY = 0;
-    FirstID = 0;
+    LastID = 0;
 
     Width     = 0;
     Height     = 0;
@@ -95,11 +95,14 @@ void Entity::PosValidTile(){
         }
     }
 
+    if(!(_col_x | _col_y))      //если коллизий не было - выход
+        return;
+
     //отталкивание от тайлов
-    if(_col_x == 0 && _col_y == 1)
-        MapY -= dy;
-    else if(_col_x == 1 && _col_y == 0)
-        MapX -= dx;
+    if(_col_x == 1 && _col_y > 1 && _last_x/MAP_W == _last_y/MAP_W)
+            MapY -= dy;
+    else if(_col_x > 1 && _col_y == 1 && _last_x%MAP_W == _last_y%MAP_W)
+            MapX -= dx;
     else if(_col_x == 1 && _col_y == 1)
         if(_last_x == _last_y)
             if(abs(dx)<abs(dy))
@@ -111,9 +114,9 @@ void Entity::PosValidTile(){
             MapY -= dy;
         }
     else{
-        if(_col_x > 1)
+        if(_col_x)
             MapX -= dx;
-        if(_col_y > 1)
+        if(_col_y)
             MapY -= dy;
     }
 }

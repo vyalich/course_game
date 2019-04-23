@@ -33,7 +33,7 @@ class Entity {
         SDL_Surface*    Surf_Entity;
 
     protected:
-        int              FirstID;
+        int              LastID;
         double           MapX;
         double           MapY;
 
