@@ -30,11 +30,9 @@ class Entity {
     protected:
         //CAnimation      Anim_Control;
 
-        SDL_Surface*    Surf_Entity;
-
     protected:
-        double           MapX;
-        double           MapY;
+        double          MapX;
+        double          MapY;
 
         double          ViewX;
         double          ViewY;
@@ -42,15 +40,14 @@ class Entity {
         int             Width;
         int             Height;
 
-    public:
-        int         Type;
-        bool        Dead;
-        //int        Flags;
+        Uint8           WaitTime;
+        Uint32          LastFrame;
+        int             SpriteX;
+        int             SpriteY;
 
-    protected:
-        double      Speed;
-        double      SpeedX;
-        double      SpeedY;
+        double          Speed;
+        double          SpeedX;
+        double          SpeedY;
 
 
     public:
@@ -58,11 +55,13 @@ class Entity {
 
         virtual ~Entity();
 
+        virtual SDL_Surface* GetSpriteSheet() { return 0;};
+
         virtual bool OnLoad(char* File, int Width, int Height);
 
         virtual void OnLoop();
 
-        virtual void OnRender(SDL_Surface* Surf_Display);
+        virtual void OnRender(SDL_Surface* SpriteSheet);
 
         virtual void OnCleanup();
 
@@ -72,10 +71,14 @@ class Entity {
 
         void    OnMove();
 
+        void    AnimWalk();
+
     private:
         void    PosValid();
 
-        void    PosValidTile();
+        void    PosValidTileX();
+
+        void    PosValidTileY();
 
         bool    PosValidEntity(Entity* Entity, int NewX, int NewY);
 };

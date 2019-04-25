@@ -3,22 +3,21 @@
 //std::vector<Entity*>    Entity::EntityList;
 
 Entity::Entity(){
-    Surf_Entity = NULL;
+    MapX    = 0;
+    MapY    = 0;
 
-    MapX = 0;
-    MapY = 0;
+    Width   = 0;
+    Height  = 0;
 
-    Width     = 0;
-    Height     = 0;
-
-    Type =     ENTITY_TYPE_GENERIC;
-
-    Dead = false;
+    WaitTime  = 0;
+    LastFrame = 0;
+    SpriteX = 0;
+    SpriteY = 0;
     //Flags = ENTITY_FLAG_GRAVITY;
 
-    Speed  = 0;
-    SpeedX = 0;
-    SpeedY = 0;
+    Speed   = 0;
+    SpeedX  = 0;
+    SpeedY  = 0;
 }
 
 Entity::~Entity(){
@@ -37,90 +36,81 @@ void Entity::OnLoop(){
 }
 
 void Entity::OnMove(){
-    if(SpeedX || SpeedY){
-        MapX += SpeedX;
-        MapY += SpeedY;
-        PosValidTile();
+    MapX += SpeedX;
+    PosValidTileX();
+    MapY += SpeedY;
+    PosValidTileY();
+}
+
+void Entity::PosValidTileX(){
+    int ID;
+
+    if(SpeedX < 0){
+        ID = (int)MapX/TILE_SIZE + (int)MapY/TILE_SIZE*MAP_W;
+    }
+    else{
+        ID = (int)(MapX+Width)/TILE_SIZE + (int)MapY/TILE_SIZE*MAP_W;
+    }
+    for(int y = MapY; y < MapY+Height; y += TILE_SIZE){
+        if(Map::MapControl.GetTileType(ID) == TILE_TYPE_BLOCK){
+            MapX = ID % MAP_W * TILE_SIZE;
+            if(SpeedX < 0)
+                MapX += TILE_SIZE;
+            else
+                MapX -= Width;
+            return;
+        }
+        ID += MAP_W;
     }
 }
 
-void Entity::PosValidTile(){
-    int ID = (int)MapX/TILE_SIZE + (int)MapY/TILE_SIZE*MAP_W;
+void Entity::PosValidTileY(){
+    int ID;
 
-    int _col_x = 0;
-    int _col_y = 0;
-    int _last_x = 0;
-    int _last_y = 0;
-    int x = (int)MapX/TILE_SIZE*TILE_SIZE;
-    int y = (int)MapY/TILE_SIZE*TILE_SIZE;
-    int dx = 0;
-    int dy = 0;
-
-    int i = 0, j = 0;
-    //проверка коллизии по У
-    if(SpeedY > 0){
-        i = 2;
+    if(SpeedY < 0){
+        ID = (int)MapX/TILE_SIZE + (int)MapY/TILE_SIZE*MAP_W;
     }
     else{
-        i = 0;
-        y += TILE_SIZE;
+        ID = (int)MapX/TILE_SIZE + (int)(MapY+Height)/TILE_SIZE*MAP_W;
     }
-    for(j = 0; j < 3; j++){
-        if(Map::MapControl.GetTileType(ID+i*MAP_W+j)){
-            dy = MapY - y;
-            _col_y++;
-            _last_y = ID+i*MAP_W+j;
-        }
-    }
-    //проверка коллизии по Х
-    if(SpeedX > 0){
-        j = 2;
-    }
-    else{
-        j = 0;
-        x += TILE_SIZE;
-    }
-    for(i = 0; i < 3; i++){
-        if(Map::MapControl.GetTileType(ID+i*MAP_W+j)){
-            dx = MapX - x;
-            _col_x++;
-            _last_x = ID+i*MAP_W+j;
-        }
-    }
-
-    if(!(_col_x | _col_y))      //если коллизий не было - выход
-        return;
-
-    //отталкивание от тайлов
-    if(_col_x == 1 && _col_y > 1 && _last_x/MAP_W == _last_y/MAP_W)
-            MapY -= dy;
-    else if(_col_x > 1 && _col_y == 1 && _last_x%MAP_W == _last_y%MAP_W)
-            MapX -= dx;
-    else if(_col_x == 1 && _col_y == 1)
-        if(_last_x == _last_y)
-            if(abs(dx)<abs(dy))
-                MapX -= dx;
+    for(int x = MapX; x < MapX+Width; x += TILE_SIZE){
+        if(Map::MapControl.GetTileType(ID) == TILE_TYPE_BLOCK){
+            MapY = ID / MAP_W * TILE_SIZE;
+            if(SpeedY < 0)
+                MapY += TILE_SIZE;
             else
-                MapY -= dy;
-        else{
-            MapX -= dx;
-            MapY -= dy;
+                MapY -= Height;
+            return;
         }
-    else{
-        if(_col_x)
-            MapX -= dx;
-        if(_col_y)
-            MapY -= dy;
+        ID++;
     }
+}
+
+void Entity::AnimWalk(){
+
+    int raw = 0;
+
+
+    if(SpeedX < 0)
+        raw++;
+    SpriteY = raw*Height;
+    if(LastFrame + WaitTime > SDL_GetTicks())
+        return;
+    LastFrame = SDL_GetTicks();
+    SpriteX += Width;
+    if(SpriteX == 6*Width)
+        SpriteX = 0;
 }
 
 void Entity::OnRender(SDL_Surface* Surf_Display){
-    Surface::OnDraw(Surf_Display, Surf_Entity, MapX-Camera::CameraControl.GetX(), MapY-Camera::CameraControl.GetY());
+    AnimWalk();
+    Surface::OnDraw(Surf_Display,  GetSpriteSheet(), MapX-Camera::CameraControl.GetX(),
+                    MapY-Camera::CameraControl.GetY(), SpriteX, SpriteY, Width, Height);
 }
 
 void Entity::OnCleanup(){
-    if(Surf_Entity)
-        SDL_FreeSurface(Surf_Entity);
+    if(GetSpriteSheet())
+        SDL_FreeSurface(GetSpriteSheet());
 }
 
 void Entity::StopMove(){

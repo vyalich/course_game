@@ -1,16 +1,20 @@
 #include "../header/Player.h"
 
+SDL_Surface*    Player::SpriteSheet;
+
 Player::Player(){
     intellect = 0;
 }
 
 bool Player::OnLoad(char* File, int width, int height){
-    if((Surf_Entity = Surface::OnLoad("./tile/Player.bmp")) == false) {
+    if((SpriteSheet = Surface::OnLoad("./img/Player.bmp")) == false) {
         return false;
     }
     Width = width;
     Height = height;
-    Speed = 15;
+    WaitTime  = 1000/(SpriteSheet->w/width)/2;
+    LastFrame = SDL_GetTicks();
+    Speed = 8;
     MapX = (MAP_W*TILE_SIZE>>1)-(Width>>1);
     MapY = (MAP_H*TILE_SIZE>>1)-(Height>>1);
     Camera::CameraControl.OnInit(MapX-(SCREEN_W>>1)+(Width>>1), MapY-(SCREEN_H>>1)+(Height>>1));
@@ -38,6 +42,7 @@ void Player::OnLoop(){
 }
 
 void Player::OnRender(SDL_Surface* Surf_Display, Uint32 Inter){
+    AnimWalk();
     ViewX += SpeedX * Inter;
     ViewY += SpeedY * Inter;
     /*.........................
@@ -60,8 +65,8 @@ void Player::OnRender(SDL_Surface* Surf_Display, Uint32 Inter){
     TTF_CloseFont(font);
     /*.........................*/
     Camera::CameraControl.OnMove(ViewX - (SCREEN_W>>1) + (Width>>1), ViewY - (SCREEN_H>>1) + (Height>>1));
-    Surface::OnDraw(Surf_Display, Surf_Entity, ViewX - Camera::CameraControl.GetX(),
-                    ViewY - Camera::CameraControl.GetY());
+    Surface::OnDraw(Surf_Display, SpriteSheet, ViewX - Camera::CameraControl.GetX(),
+                    ViewY - Camera::CameraControl.GetY(), SpriteX, SpriteY, Width, Height);
     /*Camera::CameraControl.OnMove(MapX - (SCREEN_W>>1) + (Width>>1), MapY - (SCREEN_H>>1) + (Height>>1));
     Surface::OnDraw(Surf_Display, Surf_Entity, MapX - Camera::CameraControl.GetX(),
                     MapY - Camera::CameraControl.GetY());*/

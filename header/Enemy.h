@@ -8,15 +8,17 @@
 
 class Enemy: public Entity{
     private:
-        Uint16      AggroRad;
+        Uint16                  AggroRad;
+        static SDL_Surface*     SpriteSheet;
 
         void SetSpeed(double DestX, double DestY);
+        virtual SDL_Surface* GetSpriteSheet() { return Enemy::SpriteSheet;};
+
     public:
         Enemy();
         ~Enemy();
         bool OnLoad(int speed, int width, int height);
         void OnLoop(double PlayerX, double PlayerY);
-
 
         static std::vector<Enemy*> EnemyList;
 

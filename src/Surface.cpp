@@ -11,8 +11,8 @@ SDL_Surface* Surface::OnLoad(char* File) {
 	if((Surf_Temp = SDL_LoadBMP(File)) == NULL) {
 		return NULL;
 	}
-
-	Surf_Return = SDL_DisplayFormatAlpha(Surf_Temp);
+    Transparent(Surf_Temp, 255, 0, 255);
+	Surf_Return = SDL_DisplayFormat(Surf_Temp);
 	SDL_FreeSurface(Surf_Temp);
 
 	return Surf_Return;

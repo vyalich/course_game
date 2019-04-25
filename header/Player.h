@@ -7,6 +7,7 @@
 class Player: public Entity{
     private:
         int intellect;
+        static SDL_Surface*    SpriteSheet;
     public:
         Player();
         bool OnLoad(char* File, int Width, int Height);

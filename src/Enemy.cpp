@@ -2,6 +2,8 @@
 
 std::vector<Enemy*> Enemy::EnemyList;
 
+SDL_Surface*        Enemy::SpriteSheet;
+
 Enemy::Enemy(){
 
 }
@@ -11,7 +13,7 @@ Enemy::~Enemy(){
 }
 
 bool Enemy::OnLoad(int speed, int width, int height){
-    if((Surf_Entity = Surface::OnLoad("./tile/Enemy.bmp")) == false) {
+    if((SpriteSheet = Surface::OnLoad("./img/Enemy.bmp")) == false) {
         return false;
     }
     Width = width;

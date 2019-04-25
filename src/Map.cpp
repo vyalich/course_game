@@ -9,7 +9,7 @@ Map::Map() {
 bool Map::OnLoad(char* File) {
     TileList.clear();
 
-    if((Surf_Tileset = Surface::OnLoad("./tile/1.bmp")) == false) {
+    if((Surf_Tileset = Surface::OnLoad("./img/1.bmp")) == false) {
         return false;
     }
 
