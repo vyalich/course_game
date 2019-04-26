@@ -4,7 +4,7 @@ void App::OnRender(){
     Map::MapControl.OnRender(Surf_Display, Camera::CameraControl.GetX(), Camera::CameraControl.GetY());
     Hero.OnRender(Surf_Display, Inter);
     for(int i = 0; i < ENEMIES; i++)
-        Enemy::EnemyList[i]->OnRender(Surf_Display);
+        Enemy::EnemyList[i]->OnRender(Surf_Display, Inter);
     /*.........................*/
     loops++;
     if(SDL_GetTicks()-start>1000){

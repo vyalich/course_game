@@ -18,6 +18,12 @@ bool Enemy::OnLoad(int speed, int width, int height){
     }
     Width = width;
     Height = height;
+    MaxFrames = SpriteSheet->w/width;
+    FrameRate = 12;
+    WaitTime  = 1000/FrameRate;
+    LastFrameTime = SDL_GetTicks();
+    Width = width;
+    Height = height;
     Speed = speed;
     MapX = rand() % (MAP_W*TILE_SIZE);
     MapY = rand() % (MAP_H*TILE_SIZE);
@@ -25,7 +31,13 @@ bool Enemy::OnLoad(int speed, int width, int height){
 
 
 void Enemy::OnLoop(double PlayerX, double PlayerY){
+
+    //double gep = sqrt((DestX-MapX)*(DestX-MapX)+(DestY-MapY)*(DestY-MapY));
     SetSpeed(PlayerX, PlayerY);
+    if(SpeedX || SpeedY)
+        AnimWalk();
+    ViewX = MapX;
+    ViewY = MapY;
     OnMove();
 }
 

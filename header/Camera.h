@@ -15,8 +15,8 @@ class Camera {
         static Camera CameraControl;
 
     private:
-        double X;
-        double Y;
+        int X;
+        int Y;
         int MaxX;
         int MaxY;
 

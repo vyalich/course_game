@@ -12,9 +12,11 @@ bool Player::OnLoad(char* File, int width, int height){
     }
     Width = width;
     Height = height;
-    WaitTime  = 1000/(SpriteSheet->w/width)/2;
-    LastFrame = SDL_GetTicks();
-    Speed = 8;
+    MaxFrames = SpriteSheet->w/width;
+    FrameRate = 12;
+    WaitTime  = 1000/FrameRate;
+    LastFrameTime = SDL_GetTicks();
+    Speed = 3;
     MapX = (MAP_W*TILE_SIZE>>1)-(Width>>1);
     MapY = (MAP_H*TILE_SIZE>>1)-(Height>>1);
     Camera::CameraControl.OnInit(MapX-(SCREEN_W>>1)+(Width>>1), MapY-(SCREEN_H>>1)+(Height>>1));
@@ -35,14 +37,15 @@ void Player::SetSpeed(int DestX, int DestY){
 }
 
 void Player::OnLoop(){
-
+    if(SpeedX || SpeedY)
+        AnimWalk();
     ViewX = MapX;
     ViewY = MapY;
     OnMove();
+    Camera::CameraControl.OnMove(MapX - (SCREEN_W>>1) + (Width>>1), MapY - (SCREEN_H>>1) + (Height>>1));
 }
 
 void Player::OnRender(SDL_Surface* Surf_Display, Uint32 Inter){
-    AnimWalk();
     ViewX += SpeedX * Inter;
     ViewY += SpeedY * Inter;
     /*.........................
@@ -64,10 +67,10 @@ void Player::OnRender(SDL_Surface* Surf_Display, Uint32 Inter){
     }
     TTF_CloseFont(font);
     /*.........................*/
-    Camera::CameraControl.OnMove(ViewX - (SCREEN_W>>1) + (Width>>1), ViewY - (SCREEN_H>>1) + (Height>>1));
+    /*Camera::CameraControl.OnMove(ViewX - (SCREEN_W>>1) + (Width>>1), ViewY - (SCREEN_H>>1) + (Height>>1));
     Surface::OnDraw(Surf_Display, SpriteSheet, ViewX - Camera::CameraControl.GetX(),
-                    ViewY - Camera::CameraControl.GetY(), SpriteX, SpriteY, Width, Height);
-    /*Camera::CameraControl.OnMove(MapX - (SCREEN_W>>1) + (Width>>1), MapY - (SCREEN_H>>1) + (Height>>1));
-    Surface::OnDraw(Surf_Display, Surf_Entity, MapX - Camera::CameraControl.GetX(),
-                    MapY - Camera::CameraControl.GetY());*/
+                    ViewY - Camera::CameraControl.GetY(), FrameX, FrameY, Width, Height);*/
+
+    Surface::OnDraw(Surf_Display, SpriteSheet, MapX - Camera::CameraControl.GetX(),
+                    MapY - Camera::CameraControl.GetY(), FrameX, FrameY, Width, Height);
 }

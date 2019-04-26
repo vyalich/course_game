@@ -40,10 +40,13 @@ class Entity {
         int             Width;
         int             Height;
 
+        char            State;
+        char            FrameRate;
+        char            MaxFrames;
         Uint8           WaitTime;
-        Uint32          LastFrame;
-        int             SpriteX;
-        int             SpriteY;
+        Uint32          LastFrameTime;
+        int             FrameX;
+        int             FrameY;
 
         double          Speed;
         double          SpeedX;
@@ -61,7 +64,7 @@ class Entity {
 
         virtual void OnLoop();
 
-        virtual void OnRender(SDL_Surface* SpriteSheet);
+        virtual void OnRender(SDL_Surface* SpriteSheet, double Inter);
 
         virtual void OnCleanup();
 

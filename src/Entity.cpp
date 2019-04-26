@@ -9,10 +9,13 @@ Entity::Entity(){
     Width   = 0;
     Height  = 0;
 
-    WaitTime  = 0;
-    LastFrame = 0;
-    SpriteX = 0;
-    SpriteY = 0;
+    State           = 0;
+    FrameRate       = 0;
+    MaxFrames       = 0;
+    WaitTime        = 0;
+    LastFrameTime   = 0;
+    FrameX          = 0;
+    FrameY          = 0;
     //Flags = ENTITY_FLAG_GRAVITY;
 
     Speed   = 0;
@@ -36,10 +39,11 @@ void Entity::OnLoop(){
 }
 
 void Entity::OnMove(){
-    MapX += SpeedX;
-    PosValidTileX();
     MapY += SpeedY;
     PosValidTileY();
+    MapX += SpeedX;
+    PosValidTileX();
+
 }
 
 void Entity::PosValidTileX(){
@@ -87,25 +91,24 @@ void Entity::PosValidTileY(){
 }
 
 void Entity::AnimWalk(){
-
-    int raw = 0;
-
-
-    if(SpeedX < 0)
-        raw++;
-    SpriteY = raw*Height;
-    if(LastFrame + WaitTime > SDL_GetTicks())
+    if(SpeedX > 0)
+        State = 0;
+    else
+        State = 1;
+    FrameY = State*Height;
+    if(LastFrameTime + WaitTime > SDL_GetTicks())
         return;
-    LastFrame = SDL_GetTicks();
-    SpriteX += Width;
-    if(SpriteX == 6*Width)
-        SpriteX = 0;
+    LastFrameTime = SDL_GetTicks();
+    FrameX += Width;
+    if(FrameX == MaxFrames*Width)
+        FrameX = 0;
 }
 
-void Entity::OnRender(SDL_Surface* Surf_Display){
-    AnimWalk();
+void Entity::OnRender(SDL_Surface* Surf_Display, double Inter){
+    /*ViewX += SpeedX * Inter;
+    ViewY += SpeedY * Inter;*/
     Surface::OnDraw(Surf_Display,  GetSpriteSheet(), MapX-Camera::CameraControl.GetX(),
-                    MapY-Camera::CameraControl.GetY(), SpriteX, SpriteY, Width, Height);
+                    MapY-Camera::CameraControl.GetY(), FrameX, FrameY, Width, Height);
 }
 
 void Entity::OnCleanup(){

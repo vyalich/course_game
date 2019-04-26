@@ -17,14 +17,14 @@ App::~App()
 }
 
 int App::OnExecute() {
-    #define LPS 25
+    #define LPS 50
     #define SKIP 1000/LPS
     if(OnInit() == false) {
         return -1;
     }
 
     SDL_Event event;
-    //основной игровой цикл
+    //основной игровой циклSurf_Display
     while(_running){
         LevelInit();
         Uint32 next_game_tick = SDL_GetTicks();
@@ -40,9 +40,11 @@ int App::OnExecute() {
                 OnLoop();
                 next_game_tick += SKIP;
 
+
             }
-            Inter = double(SDL_GetTicks() - next_game_tick + SKIP)/SKIP*500;
             OnRender();
+            Inter = double(SDL_GetTicks() - next_game_tick + SKIP)/SKIP*10;
+
         }
         LevelCleanup();
     }
