@@ -38,6 +38,7 @@
 		</Linker>
 		<Unit filename="header/App.h" />
 		<Unit filename="header/Camera.h" />
+		<Unit filename="header/Creature.h" />
 		<Unit filename="header/Define.h" />
 		<Unit filename="header/Enemy.h" />
 		<Unit filename="header/Entity.h" />
@@ -47,6 +48,7 @@
 		<Unit filename="header/Tile.h" />
 		<Unit filename="src/App.cpp" />
 		<Unit filename="src/Camera.cpp" />
+		<Unit filename="src/Crearute.cpp" />
 		<Unit filename="src/Enemy.cpp" />
 		<Unit filename="src/Entity.cpp" />
 		<Unit filename="src/LevelCleanup.cpp" />

@@ -9,6 +9,8 @@
 #define SCREEN_W    1280
 #define SCREEN_H    720
 
-#define ENEMIES     5
+#define ENEMIES     100
+
+#define BOUNDCOS    0.70710678118f
 
 #endif // DEFINE_H_INCLUDED

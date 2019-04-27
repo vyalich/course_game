@@ -5,9 +5,9 @@
 #define MAP_H       160
 
 #define DEADTOP 8
-#define DEADBOT 5
-#define BIRTH 5
+#define DEADBOT 4
+#define BIRTH 4
 #define LOOPS 6
-#define CHANCE rand()%100 < 61
+#define CHANCE rand()%1000 < 460
 
 #endif // DEFINE_H_INCLUDED

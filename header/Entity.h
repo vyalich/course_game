@@ -11,17 +11,6 @@
 #include "FPS.h"
 #include "Surface.h"
 #include <SDL_ttf.h>
-enum {
-    ENTITY_TYPE_GENERIC = 0,
-    ENTITY_TYPE_PLAYER
-};
-
-enum {
-    ENTITY_FLAG_NONE     = 0,
-    ENTITY_FLAG_GRAVITY    = 0x00000001,
-    ENTITY_FLAG_GHOST    = 0x00000002,
-    ENTITY_FLAG_MAPONLY    = 0x00000004
-};
 
 class Entity {
     public:
@@ -34,12 +23,10 @@ class Entity {
         double          MapX;
         double          MapY;
 
-        double          ViewX;
-        double          ViewY;
-
         int             Width;
         int             Height;
 
+        char            Direction;
         char            State;
         char            FrameRate;
         char            MaxFrames;
@@ -48,17 +35,11 @@ class Entity {
         int             FrameX;
         int             FrameY;
 
-        double          Speed;
-        double          SpeedX;
-        double          SpeedY;
-
 
     public:
         Entity();
 
-        virtual ~Entity();
-
-        virtual SDL_Surface* GetSpriteSheet() { return 0;};
+        virtual SDL_Surface* GetSpriteSheet() = 0;
 
         virtual bool OnLoad(char* File, int Width, int Height);
 
@@ -69,21 +50,6 @@ class Entity {
         virtual void OnCleanup();
 
         //virtual void OnAnimate();
-
-        void     StopMove();
-
-        void    OnMove();
-
-        void    AnimWalk();
-
-    private:
-        void    PosValid();
-
-        void    PosValidTileX();
-
-        void    PosValidTileY();
-
-        bool    PosValidEntity(Entity* Entity, int NewX, int NewY);
 };
 
 /*class EntityCol {

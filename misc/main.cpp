@@ -28,8 +28,6 @@ bool check(bool *element, int y, int x){
     else{
         if(count > BIRTH)
             return true;
-        else
-            return false;
     }
     return element[y*MAP_W + x];
 }

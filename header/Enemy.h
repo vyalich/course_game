@@ -1,12 +1,12 @@
 #ifndef ENEMY_H_INCLUDED
 #define ENEMY_H_INCLUDED
 
-#include "Entity.h"
+#include "Creature.h"
 #include <SDL.h>
 #include <ctime>
 #include <cstdlib>
 
-class Enemy: public Entity{
+class Enemy: public Creature{
     private:
         Uint16                  AggroRad;
         static SDL_Surface*     SpriteSheet;
