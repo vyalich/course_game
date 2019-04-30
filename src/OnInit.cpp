@@ -7,7 +7,7 @@ bool App::OnInit() {
     if(TTF_Init() < 0){
         return false;
     }
-    if((Surf_Display = SDL_SetVideoMode(SCREEN_W, SCREEN_H, 32, SDL_HWSURFACE | SDL_DOUBLEBUF | SDL_FULLSCREEN)) == NULL) {
+    if((Surf_Display = SDL_SetVideoMode(SCREEN_W, SCREEN_H, 32, SDL_HWSURFACE | SDL_DOUBLEBUF)) == NULL) {
         return false;
     }
     //Surface::Transparent(Surf_Display, 255, 255, 255);

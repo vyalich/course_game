@@ -47,7 +47,7 @@ void Map::OnRender(SDL_Surface* Surf_Display, int CamX, int CamY) {
     for(int MapY = FirstID/MAP_W*TILE_SIZE; MapY <= MaxY; MapY += TILE_SIZE) {
         ID = FirstID;
         for(int MapX = ID%MAP_W*TILE_SIZE; MapX <= MaxX; MapX += TILE_SIZE) {
-            /*if(TileList[ID].TypeID == TILE_TYPE_NONE) {
+            /*if(TileList[ID].TypeID == TILE_TYPE_NORMAL ) {
                 ID++;
                 continue;
             }*/

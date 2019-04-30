@@ -21,11 +21,17 @@ class Creature: public Entity{
     public:
         Creature();
 
-        void     StopMove();
+        void    StopMove();
 
         void    OnMove();
 
         void    AnimWalk();
+
+        void    AnimStay();
+
+        void    AnimAttack();
+
+        void    AnimDie();
 
     private:
         void    PosValid();

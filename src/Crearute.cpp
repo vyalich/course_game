@@ -61,22 +61,27 @@ void Creature::PosValidTileY(){
 
 void Creature::AnimWalk(){
     if(AngleCos > BOUNDCOS)
-        State = RIGHT;
+        Direction = RIGHT;
     else if(AngleCos < -BOUNDCOS)
-        State = LEFT;
+        Direction = LEFT;
     else{
         if(SpeedY < 0)
-            State = TOP;
+            Direction = TOP;
         else
-            State = BOTTOM;
+            Direction = BOTTOM;
     }
-    FrameY = State*Height;
+    FrameY = Direction*Height;
     if(LastFrameTime + WaitTime > SDL_GetTicks())
         return;
     LastFrameTime = SDL_GetTicks();
     FrameX += Width;
     if(FrameX == MaxFrames*Width)
         FrameX = 0;
+}
+
+void Creature::AnimStay(){
+    FrameY = Direction*Height;
+    FrameX = 0;
 }
 
 void Creature::StopMove(){

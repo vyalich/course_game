@@ -265,16 +265,16 @@
 
 1554311766 source:c:\users\dimvy\onedrive\Документы\github\course_game\src\onexecute.cpp
 
-1556376266 source:c:\users\dimvy\onedrive\Документы\github\course_game\src\oninit.cpp
+1556637520 source:c:\users\dimvy\onedrive\Документы\github\course_game\src\oninit.cpp
 	"../header/App.h"
 
-1556048004 source:c:\users\dimvy\onedrive\Документы\github\course_game\src\onloop.cpp
+1556641721 source:c:\users\dimvy\onedrive\Документы\github\course_game\src\onloop.cpp
 	"../header/App.h"
 
-1556309608 source:c:\users\dimvy\onedrive\Документы\github\course_game\src\onrender.cpp
+1556641721 source:c:\users\dimvy\onedrive\Документы\github\course_game\src\onrender.cpp
 	"../header/App.h"
 
-1556311565 source:c:\users\dimvy\onedrive\Документы\github\course_game\src\app.cpp
+1556637614 source:c:\users\dimvy\onedrive\Документы\github\course_game\src\app.cpp
 	"../header/App.h"
 
 1556352051 c:\users\dimvy\onedrive\Документы\github\course_game\header\entity.h
@@ -293,18 +293,18 @@
 1555437597 c:\users\dimvy\onedrive\Документы\github\course_game\header\tile.h
 	"Define.h"
 
-1556378224 c:\users\dimvy\onedrive\Документы\github\course_game\header\define.h
+1556637614 c:\users\dimvy\onedrive\Документы\github\course_game\header\define.h
 
 1555439297 source:c:\users\dimvy\onedrive\Документы\github\course_game\src\tile.cpp
 	"../header/Tile.h"
 
-1556112723 source:c:\users\dimvy\onedrive\Документы\github\course_game\src\surface.cpp
+1556390167 source:c:\users\dimvy\onedrive\Документы\github\course_game\src\surface.cpp
 	"../header/Surface.h"
 
 1555077430 c:\users\dimvy\onedrive\Документы\github\course_game\header\surface.h
 	<SDL.h>
 
-1556111237 source:c:\users\dimvy\onedrive\Документы\github\course_game\src\map.cpp
+1556640801 source:c:\users\dimvy\onedrive\Документы\github\course_game\src\map.cpp
 	"../header/Map.h"
 
 1555437187 c:\users\dimvy\onedrive\Документы\github\course_game\header\map.h
@@ -334,18 +334,19 @@
 1556378120 source:c:\users\dimvy\onedrive\Документы\github\course_game\src\player.cpp
 	"../header/Player.h"
 
-1556349887 c:\users\dimvy\onedrive\Документы\github\course_game\header\enemy.h
+1556639956 c:\users\dimvy\onedrive\Документы\github\course_game\header\enemy.h
 	"Creature.h"
 	<SDL.h>
+	<SDL_draw.h>
 	<ctime>
 	<cstdlib>
 
-1556378198 source:c:\users\dimvy\onedrive\Документы\github\course_game\src\enemy.cpp
+1556641545 source:c:\users\dimvy\onedrive\Документы\github\course_game\src\enemy.cpp
 	"../header/Enemy.h"
 
-1556377644 c:\users\dimvy\onedrive\Документы\github\course_game\header\creature.h
+1556634727 c:\users\dimvy\onedrive\Документы\github\course_game\header\creature.h
 	"Entity.h"
 
-1556377710 source:c:\users\dimvy\onedrive\Документы\github\course_game\src\crearute.cpp
+1556634458 source:c:\users\dimvy\onedrive\Документы\github\course_game\src\crearute.cpp
 	"../header/Creature.h"
 
