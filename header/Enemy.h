@@ -12,6 +12,9 @@ class Enemy: public Creature{
         bool                    _on_screen;
         bool                    _chasing;
         Uint16                  AggroRange;
+        Uint16                  FleeRange;
+        int                     LastX;
+        int                     LastY;
         static SDL_Surface*     SpriteSheet;
 
         void SetSpeed(double DestX, double DestY);

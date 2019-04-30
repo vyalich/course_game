@@ -5,7 +5,8 @@
 
 enum {
     TILE_TYPE_NORMAL = 0,
-    TILE_TYPE_BLOCK
+    TILE_TYPE_BLOCK,
+    TILE_TYPE_NONE
 };
 
 class Tile {

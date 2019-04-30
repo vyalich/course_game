@@ -77,10 +77,31 @@ int main()
         printf("\n");
         key = getch();
     }
+    int offset = MAP_H*MAP_W;
+    int id = 0;
+    int tileset_w = 6;
     //запись карты в файл
     for(int i = 0; i < MAP_H; i++){
         for(int j = 0; j < MAP_W; j++){
-                fprintf(MapFile, "%d:%d ", Map[i*MAP_W + j], Map[i*MAP_W + j]);
+                if(Map[i*MAP_W + j]){
+                    id = 1;
+
+                    if(i > 0 && !Map[(i-1)*MAP_W + j])
+                        id = 4;
+                    if(i < MAP_H-1 && !Map[(i+1)*MAP_W + j])
+                        id += 2;
+                    if(i < MAP_H-2 && !Map[(i+2)*MAP_W + j] && Map[(i+1)*MAP_W + j])
+                        id ++;
+                    if(j > 0 && (!Map[i*MAP_W + j-1] || !Map[(i+1)*MAP_W + j-1] && i < MAP_H-1))
+                        id += tileset_w;
+                    if(j < MAP_W-1 && (!Map[i*MAP_W + j+1] || !Map[(i+1)*MAP_W + j+1] && i < MAP_H-1))
+                        id += 2*tileset_w;
+                    fprintf(MapFile, "%d:1 ", id);
+                }
+                else{
+                    id = 0;
+                    fprintf(MapFile, "%d:0 ", id);
+                }
             }
         fprintf(MapFile, "\n");
     }

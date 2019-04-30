@@ -16,6 +16,8 @@ class Map {
 
     private:
         std::vector<Tile> TileList;     //
+        int          Tileset_w;
+        int          Tileset_h;
 
     public:
         Map();

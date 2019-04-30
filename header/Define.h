@@ -1,15 +1,15 @@
 #ifndef DEFINE_H_INCLUDED
 #define DEFINE_H_INCLUDED
 
-#define MAP_W       240
-#define MAP_H       160
+#define MAP_W       140
+#define MAP_H       100
 
-#define TILE_SIZE   16
+#define TILE_SIZE   32
 
 #define SCREEN_W    1280
 #define SCREEN_H    720
 
-#define ENEMIES     100
+#define ENEMIES     10
 
 #define BOUNDCOS    0.70710678118f
 

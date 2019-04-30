@@ -25,7 +25,8 @@ bool Enemy::OnLoad(int speed, int width, int height){
     _on_screen = false;
     Width = width;
     Height = height;
-    AggroRange = 16*TILE_SIZE;
+    AggroRange = 10*TILE_SIZE;
+    FleeRange = 14*TILE_SIZE;
     MaxFrames = SpriteSheet->w/width;
     FrameRate = 12;
     WaitTime  = 1000/FrameRate;
@@ -34,8 +35,9 @@ bool Enemy::OnLoad(int speed, int width, int height){
     Width = width;
     Height = height;
     Speed = speed;
-    MapX = 32+rand() % (MAP_W*TILE_SIZE - 64);
-    MapY = 32+rand() % (MAP_H*TILE_SIZE - 64);
+    LastX = MapX = 32+rand() % (MAP_W*TILE_SIZE - 64);
+    LastY = MapY = 32+rand() % (MAP_H*TILE_SIZE - 64);
+
 }
 
 
@@ -57,7 +59,7 @@ void Enemy::OnLoop(double PlayerX, double PlayerY, int CamX, int CamY, SDL_Surfa
         double dx = TILE_SIZE/gep*(PlayerX-MapX);
         double dy = TILE_SIZE/gep*(PlayerY-MapY);
         for(double x = MapX+Width/2, y = MapY+Height/2; abs(x-(PlayerX+Width/2))>abs(dx) && abs(y - (PlayerY+Height/2))>abs(dy); x+=dx, y+=dy){
-            Draw_FillCircle(Surf_Display, x - CamX, y - CamY, 2, 0xff0000);
+            //Draw_FillCircle(Surf_Display, x - CamX, y - CamY, 2, 0xff0000);
             if(Map::MapControl.GetTileType((int)x/TILE_SIZE + (int)y/TILE_SIZE*MAP_W) == TILE_TYPE_BLOCK){
                 State = STAY;
                 break;

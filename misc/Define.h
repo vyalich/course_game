@@ -1,8 +1,8 @@
 #ifndef DEFINE_H_INCLUDED
 #define DEFINE_H_INCLUDED
 
-#define MAP_W       240
-#define MAP_H       160
+#define MAP_W       140
+#define MAP_H       100
 
 #define DEADTOP 8
 #define DEADBOT 4

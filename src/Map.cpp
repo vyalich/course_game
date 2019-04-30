@@ -12,6 +12,8 @@ bool Map::OnLoad(char* File) {
     if((Surf_Tileset = Surface::OnLoad("./img/1.bmp")) == false) {
         return false;
     }
+    Tileset_w = Surf_Tileset->w/TILE_SIZE;
+    Tileset_h = Surf_Tileset->h/TILE_SIZE;
 
     FILE* FileHandle = fopen(File, "r");
 
@@ -36,9 +38,6 @@ bool Map::OnLoad(char* File) {
 void Map::OnRender(SDL_Surface* Surf_Display, int CamX, int CamY) {
     if(Surf_Tileset == NULL) return;
 
-    int TilesetWidth  = Surf_Tileset->w / TILE_SIZE;
-    int TilesetHeight = Surf_Tileset->h / TILE_SIZE;
-
     int FirstID = (int)CamX/TILE_SIZE + (int)CamY/TILE_SIZE*MAP_W;
     int MaxY = CamY + SCREEN_H;
     int MaxX = CamX + SCREEN_W;
@@ -47,16 +46,12 @@ void Map::OnRender(SDL_Surface* Surf_Display, int CamX, int CamY) {
     for(int MapY = FirstID/MAP_W*TILE_SIZE; MapY <= MaxY; MapY += TILE_SIZE) {
         ID = FirstID;
         for(int MapX = ID%MAP_W*TILE_SIZE; MapX <= MaxX; MapX += TILE_SIZE) {
-            /*if(TileList[ID].TypeID == TILE_TYPE_NORMAL ) {
-                ID++;
-                continue;
-            }*/
             //координаты тайла на экране
             int ScrX = MapX - CamX;
             int ScrY = MapY - CamY;
             //выбираем нужный тайл из тайлсета
-            int TilesetX = (TileList[ID].TileID % TilesetWidth) * TILE_SIZE;
-            int TilesetY = (TileList[ID].TileID / TilesetWidth) * TILE_SIZE;
+            int TilesetX = (TileList[ID].TileID % Tileset_w) * TILE_SIZE;
+            int TilesetY = (TileList[ID].TileID / Tileset_w) * TILE_SIZE;
             //отрисовка тайла
             Surface::OnDraw(Surf_Display, Surf_Tileset, ScrX, ScrY, TilesetX, TilesetY, TILE_SIZE, TILE_SIZE);
 

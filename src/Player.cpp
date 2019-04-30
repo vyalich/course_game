@@ -18,7 +18,7 @@ bool Player::OnLoad(char* File, int width, int height){
     LastFrameTime = SDL_GetTicks();
     State = 2;
     Speed = 5;
-    MapX = (MAP_W*TILE_SIZE>>1)-(Width>>1);
+    MapX = (MAP_W*TILE_SIZE>>1)-(Width>>1)-6*TILE_SIZE;
     MapY = (MAP_H*TILE_SIZE>>1)-(Height>>1);
     Camera::CameraControl.OnInit(MapX-(SCREEN_W>>1)+(Width>>1), MapY-(SCREEN_H>>1)+(Height>>1));
 }

@@ -19,12 +19,12 @@ void Creature::PosValidTileX(){
     int ID;
 
     if(SpeedX < 0){
-        ID = (int)MapX/TILE_SIZE + (int)MapY/TILE_SIZE*MAP_W;
+        ID = (int)MapX/TILE_SIZE + (int)(MapY+Height/2)/TILE_SIZE*MAP_W;
     }
     else{
-        ID = (int)(MapX+Width)/TILE_SIZE + (int)MapY/TILE_SIZE*MAP_W;
+        ID = (int)(MapX+Width)/TILE_SIZE + (int)(MapY+Height/2)/TILE_SIZE*MAP_W;
     }
-    for(int y = (int)MapY/TILE_SIZE*TILE_SIZE; y < MapY+Height-1; y += TILE_SIZE){
+    for(int y = (int)(MapY+Height/2)/TILE_SIZE*TILE_SIZE; y < MapY+Height-1; y += TILE_SIZE){
         if(Map::MapControl.GetTileType(ID) == TILE_TYPE_BLOCK){
             MapX = ID % MAP_W * TILE_SIZE;
             if(SpeedX < 0)
@@ -41,7 +41,7 @@ void Creature::PosValidTileY(){
     int ID;
 
     if(SpeedY < 0){
-        ID = (int)MapX/TILE_SIZE + (int)MapY/TILE_SIZE*MAP_W;
+        ID = (int)MapX/TILE_SIZE + (int)(MapY+Height/2)/TILE_SIZE*MAP_W;
     }
     else{
         ID = (int)MapX/TILE_SIZE + (int)(MapY+Height)/TILE_SIZE*MAP_W;
@@ -50,7 +50,7 @@ void Creature::PosValidTileY(){
         if(Map::MapControl.GetTileType(ID) == TILE_TYPE_BLOCK){
             MapY = ID / MAP_W * TILE_SIZE;
             if(SpeedY < 0)
-                MapY += TILE_SIZE;
+                MapY += TILE_SIZE - Height/2;
             else
                 MapY -= Height;
             return;

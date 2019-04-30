@@ -6,16 +6,16 @@ Surface::Surface() {
 
 SDL_Surface* Surface::OnLoad(char* File) {
 	SDL_Surface* Surf_Temp = NULL;
-	//SDL_Surface* Surf_Return = NULL;
+	SDL_Surface* Surf_Return = NULL;
 
 	if((Surf_Temp = SDL_LoadBMP(File)) == NULL) {
 		return NULL;
 	}
     Transparent(Surf_Temp, 255, 0, 255);
-	/*Surf_Return = SDL_DisplayFormat(Surf_Temp);
-	SDL_FreeSurface(Surf_Temp);*/
+	Surf_Return = SDL_DisplayFormat(Surf_Temp);
+	SDL_FreeSurface(Surf_Temp);
 
-	return Surf_Temp;
+	return Surf_Return;
 }
 
 bool Surface::OnDraw(SDL_Surface* Surf_Dest, SDL_Surface* Surf_Src, int X, int Y) {
