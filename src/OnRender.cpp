@@ -5,6 +5,7 @@ void App::OnRender(){
     Hero.OnRender(Surf_Display, Inter);
     for(int i = 0; i < ENEMIES; i++)
         Enemy::EnemyList[i]->OnRender(Surf_Display, Inter);
+    GUI::GUIControl.OnRender(Surf_Display);
     /*.........................*/
     loops++;
     if(SDL_GetTicks()-start>1000){

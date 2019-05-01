@@ -4,11 +4,6 @@ std::vector<Enemy*> Enemy::EnemyList;
 
 SDL_Surface*        Enemy::SpriteSheet;
 
-enum            {STAY       = 0,
-                 WALK          ,
-                 ATTACK        ,
-                 DIE            };
-
 Enemy::Enemy(){
 
 }
@@ -23,10 +18,12 @@ bool Enemy::OnLoad(int speed, int width, int height){
         return false;
     }
     _on_screen = false;
+    _chasing = IDLE;
     Width = width;
     Height = height;
     AggroRange = 10*TILE_SIZE;
-    FleeRange = 14*TILE_SIZE;
+    FleeRange = 12*TILE_SIZE;
+    AttackRange = TILE_SIZE;
     MaxFrames = SpriteSheet->w/width;
     FrameRate = 12;
     WaitTime  = 1000/FrameRate;
@@ -54,38 +51,63 @@ void Enemy::OnLoop(double PlayerX, double PlayerY, int CamX, int CamY, SDL_Surfa
 
 
 
-    if(gep < AggroRange){
-        State = WALK;
-        double dx = TILE_SIZE/gep*(PlayerX-MapX);
-        double dy = TILE_SIZE/gep*(PlayerY-MapY);
-        for(double x = MapX+Width/2, y = MapY+Height/2; abs(x-(PlayerX+Width/2))>abs(dx) && abs(y - (PlayerY+Height/2))>abs(dy); x+=dx, y+=dy){
-            //Draw_FillCircle(Surf_Display, x - CamX, y - CamY, 2, 0xff0000);
-            if(Map::MapControl.GetTileType((int)x/TILE_SIZE + (int)y/TILE_SIZE*MAP_W) == TILE_TYPE_BLOCK){
-                State = STAY;
-                break;
-            }
+    if(gep <= AggroRange && _chasing == IDLE || _chasing == ATTACK)
+        LineOfSight(PlayerX, PlayerY, gep, Surf_Display);
+    if(_chasing == CHASE){
+        if(gep <= AttackRange)
+            _chasing = ATTACK;
+        else if(gep >=FleeRange){
+            _chasing = FLEE;
+            SetSpeed(LastX, LastY);
         }
     }
-    /*else if(gep < AttackRange)
-        State = ATTACK;*/
-    else
-        State = STAY;
 
-    switch(State){
-        case WALK:
+
+    switch(_chasing){
+        case CHASE:
             SpeedX = Speed/gep*(PlayerX-MapX);
             SpeedY = Speed/gep*(PlayerY-MapY);
             AngleCos = (PlayerX-MapX)/gep;
             AnimWalk();
             OnMove();
             break;
-        case STAY:
+        case FLEE:
+            //SetSpeed(LastX, LastY);
+            OnMove();
+            AnimWalk();
+            if(abs(MapX - LastX) < TILE_SIZE && abs(MapY - LastY) < TILE_SIZE){
+                _chasing = IDLE;
+                AnimStay();
+                StopMove();
+            }
+            break;
+        case IDLE:
             AnimStay();
             StopMove();
             break;
-        //case ATTACK:
-
+        case ATTACK:
+            //AnimAttack();
+            break;
     }
+}
+
+void Enemy::LineOfSight(double PlayerX, double PlayerY, double gep, SDL_Surface *Surf_Display){
+    double dx = TILE_SIZE/gep*(PlayerX-MapX);
+    double dy = TILE_SIZE/gep*(PlayerY-MapY);
+    for(double x = MapX+Width/2, y = MapY+Height/2; abs(x-(PlayerX+Width/2))>abs(dx) && abs(y - (PlayerY+Height/2))>abs(dy); x+=dx, y+=dy){
+        //Draw_FillCircle(Surf_Display, x - Camera::CameraControl.GetX(), y - Camera::CameraControl.GetY(), 2, 0xff0000);
+        if(Map::MapControl.GetTileType((int)x/TILE_SIZE + (int)y/TILE_SIZE*MAP_W) == TILE_TYPE_BLOCK){
+            _chasing = IDLE;
+            return;
+        }
+    }
+    _chasing = CHASE;
+    LastX = MapX;
+    LastY = MapY;
+    /*Draw_Circle(Surf_Display, LastX - Camera::CameraControl.GetX(), LastY - Camera::CameraControl.GetY(), 15, 0xff0000);
+    Draw_Circle(Surf_Display, LastX - Camera::CameraControl.GetX(), LastY - Camera::CameraControl.GetY(), 14, 0xff0000);
+    Draw_Circle(Surf_Display, LastX - Camera::CameraControl.GetX(), LastY - Camera::CameraControl.GetY(), 13, 0xff0000);*/
+
 }
 
 void Enemy::SetSpeed(double DestX, double DestY){

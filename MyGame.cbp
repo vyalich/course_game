@@ -42,6 +42,7 @@
 		<Unit filename="header/Define.h" />
 		<Unit filename="header/Enemy.h" />
 		<Unit filename="header/Entity.h" />
+		<Unit filename="header/GUI.h" />
 		<Unit filename="header/Map.h" />
 		<Unit filename="header/Player.h" />
 		<Unit filename="header/Surface.h" />
@@ -51,6 +52,7 @@
 		<Unit filename="src/Crearute.cpp" />
 		<Unit filename="src/Enemy.cpp" />
 		<Unit filename="src/Entity.cpp" />
+		<Unit filename="src/GUI.cpp" />
 		<Unit filename="src/LevelCleanup.cpp" />
 		<Unit filename="src/LevelInit.cpp" />
 		<Unit filename="src/Map.cpp" />

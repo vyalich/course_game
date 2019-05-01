@@ -10,4 +10,6 @@ void App::OnLoop(){
     int CamY = Camera::CameraControl.GetY();
     for(int i = 0; i < ENEMIES; i++)
         Enemy::EnemyList[i]->OnLoop(TarX, TarY, CamX, CamY, Surf_Display);
+
+    GUI::GUIControl.OnLoop();
 }

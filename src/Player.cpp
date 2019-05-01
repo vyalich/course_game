@@ -16,8 +16,10 @@ bool Player::OnLoad(char* File, int width, int height){
     FrameRate = 12;
     WaitTime  = 1000/FrameRate;
     LastFrameTime = SDL_GetTicks();
-    State = 2;
+    Direction = BOTTOM;
     Speed = 5;
+    Health = 10000;
+    MaxHealth = 10000;
     MapX = (MAP_W*TILE_SIZE>>1)-(Width>>1)-6*TILE_SIZE;
     MapY = (MAP_H*TILE_SIZE>>1)-(Height>>1);
     Camera::CameraControl.OnInit(MapX-(SCREEN_W>>1)+(Width>>1), MapY-(SCREEN_H>>1)+(Height>>1));

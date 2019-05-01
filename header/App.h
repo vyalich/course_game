@@ -11,6 +11,7 @@
 #include "Map.h"
 #include "Camera.h"
 #include "Enemy.h"
+#include "GUI.h"
 
 class App
 {
