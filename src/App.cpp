@@ -1,5 +1,7 @@
 #include "../header/App.h"
 
+Player App::Hero;
+
 App::App()
 {
     _running = true;

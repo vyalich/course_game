@@ -19,18 +19,18 @@ void Creature::PosValidTileX(){
     int ID;
 
     if(SpeedX < 0){
-        ID = (int)MapX/TILE_SIZE + (int)(MapY+Height/2)/TILE_SIZE*MAP_W;
+        ID = (int)(MapX+16)/TILE_SIZE + (int)(MapY+42)/TILE_SIZE*MAP_W;
     }
     else{
-        ID = (int)(MapX+Width)/TILE_SIZE + (int)(MapY+Height/2)/TILE_SIZE*MAP_W;
+        ID = (int)(MapX-16+Width)/TILE_SIZE + (int)(MapY+42)/TILE_SIZE*MAP_W;
     }
-    for(int y = (int)(MapY+Height/2)/TILE_SIZE*TILE_SIZE; y < MapY+Height-1; y += TILE_SIZE){
+    for(int y = (int)(MapY+42)/TILE_SIZE*TILE_SIZE; y < MapY+Height-2; y += TILE_SIZE){
         if(Map::MapControl.GetTileType(ID) == TILE_TYPE_BLOCK){
             MapX = ID % MAP_W * TILE_SIZE;
             if(SpeedX < 0)
-                MapX += TILE_SIZE;
+                MapX += TILE_SIZE - 16;
             else
-                MapX -= Width;
+                MapX -= Width - 16;
             return;
         }
         ID += MAP_W;
@@ -41,18 +41,18 @@ void Creature::PosValidTileY(){
     int ID;
 
     if(SpeedY < 0){
-        ID = (int)MapX/TILE_SIZE + (int)(MapY+Height/2)/TILE_SIZE*MAP_W;
+        ID = (int)(MapX+16)/TILE_SIZE + (int)(MapY+42)/TILE_SIZE*MAP_W;
     }
     else{
-        ID = (int)MapX/TILE_SIZE + (int)(MapY+Height)/TILE_SIZE*MAP_W;
+        ID = (int)(MapX+16)/TILE_SIZE + (int)(MapY+Height)/TILE_SIZE*MAP_W;
     }
-    for(int x = (int)MapX/TILE_SIZE*TILE_SIZE; x < MapX+Width-1; x += TILE_SIZE){
+    for(int x = (int)(MapX+16)/TILE_SIZE*TILE_SIZE; x < MapX+Width-17; x += TILE_SIZE){
         if(Map::MapControl.GetTileType(ID) == TILE_TYPE_BLOCK){
             MapY = ID / MAP_W * TILE_SIZE;
             if(SpeedY < 0)
-                MapY += TILE_SIZE - Height/2;
+                MapY += TILE_SIZE - 42;
             else
-                MapY -= Height;
+                MapY -= Height - 2;
             return;
         }
         ID++;
@@ -70,20 +70,18 @@ void Creature::AnimWalk(){
         else
             Direction = BOTTOM;
     }
-    FrameY = Direction*Height;
+
+
+    FrameY = (State+Direction)*Height;
     if(LastFrameTime + WaitTime > SDL_GetTicks())
         return;
     LastFrameTime = SDL_GetTicks();
     FrameX += Width;
-    if(FrameX == MaxFrames*Width)
+    if(FrameX >= MaxFrames*Width)
         FrameX = 0;
-}
-
-void Creature::AnimStay(){
-    FrameY = Direction*Height;
-    FrameX = 0;
 }
 
 void Creature::StopMove(){
     SpeedX = SpeedY = 0;
+    FrameX = 8*Width;
 }

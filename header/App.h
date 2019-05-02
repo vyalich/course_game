@@ -13,6 +13,8 @@
 #include "Enemy.h"
 #include "GUI.h"
 
+class Player;
+
 class App
 {
     private:
@@ -26,7 +28,9 @@ class App
         Uint32          loops;
         Uint16          fps;
         SDL_Surface     *Surf_Display;       //поверхность экрана
-        Player          Hero;
+
+    public:
+        static Player   Hero;
 
 
     public:

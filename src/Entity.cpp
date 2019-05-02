@@ -1,20 +1,6 @@
 #include "../header/Entity.h"
 
 Entity::Entity(){
-    MapX    = 0;
-    MapY    = 0;
-
-    Width   = 0;
-    Height  = 0;
-
-    State           = 0;
-    FrameRate       = 0;
-    MaxFrames       = 0;
-    WaitTime        = 0;
-    LastFrameTime   = 0;
-    FrameX          = 0;
-    FrameY          = 0;
-
 
 }
 

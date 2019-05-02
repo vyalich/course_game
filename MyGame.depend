@@ -233,7 +233,7 @@
 1556048004 source:c:\users\dimvy\onedrive\Документы\github\course_game\src\levelcleanup.cpp
 	"../header/App.h"
 
-1556707453 c:\users\dimvy\onedrive\Документы\github\course_game\header\app.h
+1556799776 c:\users\dimvy\onedrive\Документы\github\course_game\header\app.h
 	<SDL.h>
 	<SDL_ttf.h>
 	<SDL_draw.h>
@@ -252,7 +252,7 @@
 	<SDL_draw.h>
 	<cmath>
 
-1556378224 source:c:\users\dimvy\onedrive\Документы\github\course_game\src\levelinit.cpp
+1556795412 source:c:\users\dimvy\onedrive\Документы\github\course_game\src\levelinit.cpp
 	"../header/App.h"
 
 1556045644 source:c:\users\dimvy\onedrive\Документы\github\course_game\src\oncleanup.cpp
@@ -266,19 +266,19 @@
 
 1554311766 source:c:\users\dimvy\onedrive\Документы\github\course_game\src\onexecute.cpp
 
-1556707425 source:c:\users\dimvy\onedrive\Документы\github\course_game\src\oninit.cpp
+1556798637 source:c:\users\dimvy\onedrive\Документы\github\course_game\src\oninit.cpp
 	"../header/App.h"
 
-1556707425 source:c:\users\dimvy\onedrive\Документы\github\course_game\src\onloop.cpp
+1556815164 source:c:\users\dimvy\onedrive\Документы\github\course_game\src\onloop.cpp
 	"../header/App.h"
 
-1556707425 source:c:\users\dimvy\onedrive\Документы\github\course_game\src\onrender.cpp
+1556815164 source:c:\users\dimvy\onedrive\Документы\github\course_game\src\onrender.cpp
 	"../header/App.h"
 
-1556642640 source:c:\users\dimvy\onedrive\Документы\github\course_game\src\app.cpp
+1556798773 source:c:\users\dimvy\onedrive\Документы\github\course_game\src\app.cpp
 	"../header/App.h"
 
-1556701462 c:\users\dimvy\onedrive\Документы\github\course_game\header\entity.h
+1556816720 c:\users\dimvy\onedrive\Документы\github\course_game\header\entity.h
 	<vector>
 	<cmath>
 	"Tile.h"
@@ -288,13 +288,13 @@
 	"Surface.h"
 	<SDL_ttf.h>
 
-1556352089 source:c:\users\dimvy\onedrive\Документы\github\course_game\src\entity.cpp
+1556816730 source:c:\users\dimvy\onedrive\Документы\github\course_game\src\entity.cpp
 	"../header/Entity.h"
 
 1556651825 c:\users\dimvy\onedrive\Документы\github\course_game\header\tile.h
 	"Define.h"
 
-1556702556 c:\users\dimvy\onedrive\Документы\github\course_game\header\define.h
+1556814108 c:\users\dimvy\onedrive\Документы\github\course_game\header\define.h
 
 1555439297 source:c:\users\dimvy\onedrive\Документы\github\course_game\src\tile.cpp
 	"../header/Tile.h"
@@ -329,32 +329,39 @@
 
 1555098391 c:\users\dimvy\onedrive\Документы\github\course_game\header\fps.h
 
-1556350377 c:\users\dimvy\onedrive\Документы\github\course_game\header\player.h
+1556800581 c:\users\dimvy\onedrive\Документы\github\course_game\header\player.h
 	"Creature.h"
+	"Enemy.h"
+	"GUI.h"
 
-1556704615 source:c:\users\dimvy\onedrive\Документы\github\course_game\src\player.cpp
+1556820003 source:c:\users\dimvy\onedrive\Документы\github\course_game\src\player.cpp
 	"../header/Player.h"
 
-1556702108 c:\users\dimvy\onedrive\Документы\github\course_game\header\enemy.h
+1556815382 c:\users\dimvy\onedrive\Документы\github\course_game\header\enemy.h
 	"Creature.h"
+	"Player.h"
 	<SDL.h>
 	<SDL_draw.h>
 	<ctime>
 	<cstdlib>
 
-1556703029 source:c:\users\dimvy\onedrive\Документы\github\course_game\src\enemy.cpp
+1556821507 source:c:\users\dimvy\onedrive\Документы\github\course_game\src\enemy.cpp
 	"../header/Enemy.h"
 
-1556634727 c:\users\dimvy\onedrive\Документы\github\course_game\header\creature.h
+1556816719 c:\users\dimvy\onedrive\Документы\github\course_game\header\creature.h
 	"Entity.h"
 
-1556665334 source:c:\users\dimvy\onedrive\Документы\github\course_game\src\crearute.cpp
+1556821609 source:c:\users\dimvy\onedrive\Документы\github\course_game\src\crearute.cpp
 	"../header/Creature.h"
 
-1556708321 source:c:\users\dimvy\onedrive\Документы\github\course_game\src\gui.cpp
+1556813996 source:c:\users\dimvy\onedrive\Документы\github\course_game\src\gui.cpp
 	"../header/GUI.h"
 
-1556708339 c:\users\dimvy\onedrive\Документы\github\course_game\header\gui.h
+1556799463 c:\users\dimvy\onedrive\Документы\github\course_game\header\gui.h
 	<SDL_draw.h>
+	<SDL.h>
+	<SDL_ttf.h>
+	<string>
 	"Player.h"
+	"App.h"
 

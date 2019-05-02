@@ -2,6 +2,7 @@
 #define ENEMY_H_INCLUDED
 
 #include "Creature.h"
+#include "Player.h"
 #include <SDL.h>
 #include <SDL_draw.h>
 #include <ctime>
@@ -19,7 +20,9 @@ class Enemy: public Creature{
         Uint16                  AggroRange;
         Uint16                  FleeRange;
         Uint16                  AttackRange;
-        //Uint16
+        Uint16                  AttackSpeed;
+        Uint32                  LastAttack;
+        int                     AttackPower;
         int                     LastX;
         int                     LastY;
         static SDL_Surface*     SpriteSheet;
@@ -30,10 +33,12 @@ class Enemy: public Creature{
     public:
         Enemy();
         ~Enemy();
-        bool OnLoad(int speed, int width, int height);
+        bool OnLoad(int speed);
         void OnLoop(double PlayerX, double PlayerY, int CamX, int CamY, SDL_Surface *Surf_Display);
         void OnRender(SDL_Surface* Surf_Display, double Inter);
         void LineOfSight(double PlayerX, double PlayerY, double gep, SDL_Surface *Surf_Display);
+        void Attack();
+        void AnimAttack();
 
         static std::vector<Enemy*> EnemyList;
 

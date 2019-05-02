@@ -27,10 +27,6 @@ class Creature: public Entity{
 
         void    AnimWalk();
 
-        void    AnimStay();
-
-        void    AnimAttack();
-
         void    AnimDie();
 
     private:

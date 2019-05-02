@@ -6,6 +6,6 @@ void App::LevelInit(){
     for(int i = 0; i < ENEMIES; i++){
         temp= new Enemy;
         Enemy::EnemyList.push_back(temp);
-        Enemy::EnemyList[i]->OnLoad(3, 32, 48);
+        Enemy::EnemyList[i]->OnLoad(3);
     }
 }

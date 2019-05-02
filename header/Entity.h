@@ -28,7 +28,7 @@ class Entity {
 
         char            Direction;
         char            State;
-        char            FrameRate;
+        char            StartFrame;
         char            MaxFrames;
         Uint8           WaitTime;
         Uint32          LastFrameTime;

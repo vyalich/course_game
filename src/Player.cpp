@@ -6,21 +6,22 @@ Player::Player(){
     intellect = 0;
 }
 
-bool Player::OnLoad(char* File, int width, int height){
+bool Player::OnLoad(){
     if((SpriteSheet = Surface::OnLoad("./img/Player.bmp")) == false) {
         return false;
     }
-    Width = width;
-    Height = height;
-    MaxFrames = SpriteSheet->w/width;
-    FrameRate = 12;
-    WaitTime  = 1000/FrameRate;
+    Speed = 5;
+    Width = 64;
+    Height = 64;
+
+    MaxFrames = 8;
+    WaitTime  = 3000/Speed/MaxFrames;
     LastFrameTime = SDL_GetTicks();
     Direction = BOTTOM;
-    Speed = 5;
-    Health = 10000;
+
+    Health = 5000;
     MaxHealth = 10000;
-    MapX = (MAP_W*TILE_SIZE>>1)-(Width>>1)-6*TILE_SIZE;
+    MapX = (MAP_W*TILE_SIZE>>1)-(Width>>1)-8*TILE_SIZE;
     MapY = (MAP_H*TILE_SIZE>>1)-(Height>>1);
     Camera::CameraControl.OnInit(MapX-(SCREEN_W>>1)+(Width>>1), MapY-(SCREEN_H>>1)+(Height>>1));
 }

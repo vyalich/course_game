@@ -12,8 +12,6 @@ void App::OnRender(){
         fps = loops;
         loops = 0;
     }
-    TTF_Init();
-    atexit(TTF_Quit);
 
     SDL_Surface *message;
     TTF_Font *font;
