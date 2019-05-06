@@ -24,12 +24,12 @@ bool Enemy::OnLoad(int speed){
     Height = 64;
     AggroRange = 9*TILE_SIZE;
     FleeRange = 12*TILE_SIZE;
-    AttackRange = TILE_SIZE;
+    AttackRange = TILE_SIZE+16;
     AttackSpeed = 900;
     AttackPower = 8;
     LastAttack = 0;
 
-    Health = 90;
+    Health = 0;
     MaxHealth = 90;
     HPRegen = 0.04;
 
@@ -52,10 +52,16 @@ void Enemy::OnLoop(double PlayerX, double PlayerY, int CamX, int CamY, SDL_Surfa
     else
         Health = MaxHealth;
 
-    if(MapX >= CamX - Width && MapX <= CamX+SCREEN_W && MapY >= CamY - Height && MapY <= CamY+SCREEN_H)
+    if(MapX >= CamX - Width && MapX <= CamX+SCREEN_W && MapY >= CamY - Height && MapY <= CamY+SCREEN_H){
+        if(!_on_screen)
+            Entity::OnScreen.push_back(this);
         _on_screen = true;
-    else
+    }
+    else{
+        if(_on_screen)
+            Entity::OnScreen.remove(this);
         _on_screen = false;
+    }
 
     if(!_on_screen)
         return;
@@ -74,6 +80,11 @@ void Enemy::OnLoop(double PlayerX, double PlayerY, int CamX, int CamY, SDL_Surfa
         LineOfSight(PlayerX, PlayerY, Surf_Display);
 
     if(_chasing == ATTACK && FrameX != 0){
+        AngleCos = (PlayerX-MapX)/Dist;
+        if(MapY - PlayerY > 0)
+            SpeedY = -0.000000001;
+        else
+            SpeedY = 0;
         AnimWalk();
         return;
     }
@@ -140,7 +151,9 @@ void Enemy::LineOfSight(double PlayerX, double PlayerY, SDL_Surface *Surf_Displa
     for(double x = MapX+Width/2, y = MapY+Height/2; abs(x-(PlayerX+Width/2))>abs(dx)
         || abs(y - (PlayerY+Height/2))>abs(dy); x+=dx, y+=dy){
         //Draw_FillCircle(Surf_Display, x - Camera::CameraControl.GetX(), y - Camera::CameraControl.GetY(), 2, 0xff0000);
-        if(Map::MapControl.GetTileType((int)x/TILE_SIZE + (int)y/TILE_SIZE*MAP_W) == TILE_TYPE_BLOCK){
+        int ID = (int)x/TILE_SIZE + (int)y/TILE_SIZE*MAP_W;
+        if(Map::MapControl.GetTileType(ID) == TILE_TYPE_BLOCK &&
+           Map::MapControl.GetTileType(ID + MAP_W) == TILE_TYPE_BLOCK){
             return;
         }
     }
@@ -157,10 +170,4 @@ void Enemy::SetSpeed(double DestX, double DestY){
     SpeedX = Speed/Dist*(DestX-MapX);
     SpeedY = Speed/Dist*(DestY-MapY);
     AngleCos = (DestX-MapX)/Dist;
-}
-
-void Enemy::OnRender(SDL_Surface* Surf_Display, double Inter){
-    if(_on_screen)
-        Surface::OnDraw(Surf_Display,  GetSpriteSheet(), MapX-Camera::CameraControl.GetX(),
-                        MapY-Camera::CameraControl.GetY(), FrameX, FrameY, Width, Height);
 }

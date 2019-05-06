@@ -5,4 +5,5 @@ void App::LevelCleanup(){
     for(int i = 0; i < ENEMIES; i++)
         Enemy::EnemyList[i]->OnCleanup();
     Enemy::EnemyList.clear();
+    Creature::OnScreen.clear();
 }

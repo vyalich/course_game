@@ -14,16 +14,17 @@ class Player: public Creature{
 
     private:
         int intellect;
-        static SDL_Surface*    SpriteSheet;
+        SDL_Surface*    SpriteSheet;
+
     public:
         Player();
         bool OnLoad();
         void OnLoop(bool _m_b_l);
+        void OnRender(SDL_Surface* Surf_Display, double Inter);
         void SetSpeed(int X, int Y);
         inline double GetMapX() {return MapX;};
         inline double GetMapY() {return MapY;};
-        virtual SDL_Surface* GetSpriteSheet() { return Player::SpriteSheet;};
-        //friend void Enemy::Attack();
+        virtual SDL_Surface* GetSpriteSheet() { return SpriteSheet;};
 };
 
 #endif // PLAYER_H_INCLUDED

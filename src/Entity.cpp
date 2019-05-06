@@ -1,5 +1,7 @@
 #include "../header/Entity.h"
 
+std::list<Entity*>   Entity::OnScreen;
+
 Entity::Entity(){
 
 }
@@ -12,10 +14,10 @@ void Entity::OnLoop(){
 
 }
 
-void Entity::OnRender(SDL_Surface* Surf_Display, double Inter){
-    Surface::OnDraw(Surf_Display,  GetSpriteSheet(), MapX-Camera::CameraControl.GetX(),
-                    MapY-Camera::CameraControl.GetY(), FrameX, FrameY, Width, Height);
+void Entity::OnRender(SDL_Surface* Surf_Display, int CamX, int CamY){
+    Surface::OnDraw(Surf_Display,  GetSpriteSheet(), MapX-CamX, MapY-CamY, FrameX, FrameY, Width, Height);
 }
+
 
 void Entity::OnCleanup(){
     if(GetSpriteSheet())

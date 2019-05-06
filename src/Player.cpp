@@ -1,6 +1,5 @@
 #include "../header/Player.h"
 
-SDL_Surface*    Player::SpriteSheet;
 
 Player::Player(){
     intellect = 0;
@@ -25,7 +24,7 @@ bool Player::OnLoad(){
     Mana = 120;
     MaxMana = 120;
     MPRegen = 0.05;
-    MapX = (MAP_W*TILE_SIZE>>1)-(Width>>1)-8*TILE_SIZE;
+    MapX = (MAP_W*TILE_SIZE>>1)-(Width>>1)-12*TILE_SIZE;
     MapY = (MAP_H*TILE_SIZE>>1)-(Height>>1);
     Camera::CameraControl.OnInit(MapX-(SCREEN_W>>1)+(Width>>1), MapY-(SCREEN_H>>1)+(Height>>1));
 }

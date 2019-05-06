@@ -10,7 +10,7 @@ void App::OnEvent(SDL_Event *event){
             if(event->button.button == SDL_BUTTON_LEFT){
                 _mouse_left = true;
             }
-            if(event->button.button == SDL_BUTTON_RIGHT || _mouse_right == true){
+            if(event->button.button == SDL_BUTTON_RIGHT){
                 _mouse_right = true;
             }
             break;

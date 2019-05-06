@@ -2,6 +2,8 @@
 #define CREATURE_H_INCLUDED
 
 #include "Entity.h"
+#include <list>
+#include <SDL_draw.h>
 
 enum    {BOTTOM = 2,
          TOP    = 0,
@@ -44,6 +46,8 @@ class Creature: public Entity{
         void    PosValidTileY();
 
         bool    PosValidEntity(Entity* Entity, int NewX, int NewY);
+
+        virtual SDL_Surface* GetSpriteSheet() = 0;
 };
 
 #endif // CREATURE_H_INCLUDED

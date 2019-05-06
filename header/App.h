@@ -33,7 +33,6 @@ class App
 
     public:
         static Player   Hero;
-        static SDL_Surface  *ForDraw;
 
 
     public:

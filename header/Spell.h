@@ -11,19 +11,20 @@
 
 class Spell{
     private:
-        bool        _exist;
-        std::string Name;
-        std::string Description;
-        int         Cost;
-        Uint16      Speed;
-        Uint16      MapX;
-        Uint16      MapY;
-        int         TarX;
-        int         TarY;
-        Uint16      CoolDown;
-        Uint32      LastUsed;
-        Uint16      Range;
-        Uint16      Power;
+        bool            _exist;
+        std::string     Name;
+        std::string     Description;
+        int             Cost;
+        Uint16          Speed;
+        Uint16          MapX;
+        Uint16          MapY;
+        int             TarX;
+        int             TarY;
+        Uint16          CoolDown;
+        static Uint32   LastUsed;
+        Uint16          Range;
+        Uint16          Power;
+        SDL_Surface     *DrawSurf;
 
     public:
         Spell();

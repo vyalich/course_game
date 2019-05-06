@@ -11,6 +11,7 @@
 #include "FPS.h"
 #include "Surface.h"
 #include <SDL_ttf.h>
+#include <list>
 
 class Entity {
     friend class GUI;
@@ -41,15 +42,20 @@ class Entity {
     public:
         Entity();
 
-        virtual SDL_Surface* GetSpriteSheet() = 0;
-
         virtual bool OnLoad(char* File, int Width, int Height);
 
         virtual void OnLoop();
 
-        virtual void OnRender(SDL_Surface* SpriteSheet, double Inter);
+        void OnRender(SDL_Surface *Surf_Display, int CamX, int CamY);
 
         virtual void OnCleanup();
+
+        friend bool Compare(Entity*, Entity*);
+
+        static std::list<Entity*>   OnScreen;
+
+    private:
+        virtual SDL_Surface* GetSpriteSheet() = 0;
 
         //virtual void OnAnimate();
 };

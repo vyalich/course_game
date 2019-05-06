@@ -7,7 +7,7 @@
 #define TILE_SIZE   32
 
 #define SCREEN_W    1280
-#define SCREEN_H    800
+#define SCREEN_H    720
 
 #define ENEMIES     1
 

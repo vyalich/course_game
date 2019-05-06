@@ -1,7 +1,6 @@
 #include "../header/App.h"
 
 Player App::Hero;
-SDL_Surface* App::ForDraw;
 
 App::App()
 {

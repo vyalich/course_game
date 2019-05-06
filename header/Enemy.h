@@ -42,7 +42,6 @@ class Enemy: public Creature{
         ~Enemy();
         bool OnLoad(int speed);
         void OnLoop(double PlayerX, double PlayerY, int CamX, int CamY, SDL_Surface *Surf_Display);
-        void OnRender(SDL_Surface* Surf_Display, double Inter);
         void LineOfSight(double PlayerX, double PlayerY, SDL_Surface *Surf_Display);
         void Attack();
         void AnimAttack();

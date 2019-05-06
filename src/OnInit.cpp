@@ -9,7 +9,8 @@ bool App::OnInit() {
         return false;
     }
 
-    if((Surf_Display = SDL_SetVideoMode(SCREEN_W, SCREEN_H, 32, SDL_ANYFORMAT |SDL_HWSURFACE | SDL_DOUBLEBUF)) == NULL) {
+    //if((Surf_Display = SDL_SetVideoMode(SCREEN_W, SCREEN_H, 32, SDL_FULLSCREEN | SDL_ANYFORMAT | SDL_HWSURFACE | SDL_DOUBLEBUF)) == NULL) {
+    if((Surf_Display = SDL_SetVideoMode(SCREEN_W, SCREEN_H, 32, SDL_ANYFORMAT | SDL_HWSURFACE | SDL_DOUBLEBUF)) == NULL) {
         return false;
     }
 
@@ -19,6 +20,8 @@ bool App::OnInit() {
     }
 
     Hero.OnLoad();
+
+    Creature::OnScreen.push_back(&Hero);
 
     //ForDraw = SDL_CreateRGBSurface(SDL_HWSURFACE, SCREEN_W + 100, SCREEN_H + 100, 32, 0, 0, 0, 0);
     //Surface::Transparent(ForDraw, 255, 0, 255);

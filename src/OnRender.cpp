@@ -3,13 +3,15 @@
 void App::OnRender(){
     Map::MapControl.OnRender(Surf_Display, Camera::CameraControl.GetX(), Camera::CameraControl.GetY());
 
-    for(int i = 0; i < ENEMIES; i++)
-        Enemy::EnemyList[i]->OnRender(Surf_Display, Inter);
+    int CamX = Camera::CameraControl.GetX();
+    int CamY = Camera::CameraControl.GetY();
 
-    Hero.OnRender(Surf_Display, Inter);
+    for(auto entity : Entity::OnScreen){
+        entity->OnRender(Surf_Display, CamX, CamY);
+    }
 
-    for(auto iter = Spell::SpellCasted.begin(); iter != Spell::SpellCasted.end(); iter++){
-        (*iter)->OnRender(Surf_Display);
+    for(auto spell : Spell::SpellCasted){
+        spell->OnRender(Surf_Display);
     }
 
     GUI::GUIControl.OnRender(Surf_Display);
