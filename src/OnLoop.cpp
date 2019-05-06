@@ -15,17 +15,11 @@ void App::OnLoop(){
     for(int i = 0; i < ENEMIES; i++)
         Enemy::EnemyList[i]->OnLoop(TarX, TarY, CamX, CamY, Surf_Display);
 
-    Entity::OnScreen.sort(Compare);
+    if(_mouse_right)
+        Spell::AddCasted();
 
-    if(_mouse_right){
-        Spell *temp = new Spell;
-        temp->OnLoad();
-        if(temp->CanCast())
-            Spell::SpellCasted.insert(Spell::SpellCasted.end(), temp);
-            //(*Spell::SpellCasted.end())->OnLoad();
-        else
-            delete temp;
-    }
+
+    Entity::OnScreen.sort(Compare);
     /*for(auto iter = Spell::SpellCasted.begin(); iter != Spell::SpellCasted.end(); iter++){
         (*iter)->OnLoop();
     }*/

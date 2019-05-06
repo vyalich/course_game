@@ -9,33 +9,37 @@
 #include "Creature.h"
 #include "Player.h"
 
-class Spell{
+class Spell: public Entity{
     private:
         bool            _exist;
-        std::string     Name;
-        std::string     Description;
         int             Cost;
         Uint16          Speed;
-        Uint16          MapX;
-        Uint16          MapY;
+        double          SpeedX;
+        double          SpeedY;
         int             TarX;
         int             TarY;
         Uint16          CoolDown;
-        static Uint32   LastUsed;
         Uint16          Range;
         Uint16          Power;
         SDL_Surface     *DrawSurf;
+
+        static Uint32           LastUsed;
+        static std::string      Name;
+        static std::string      Description;
+
+    public:
+        static std::list<Spell*> SpellCasted;
 
     public:
         Spell();
         ~Spell();
         void OnLoad();
         void OnLoop();
-        void OnRender(SDL_Surface *Surf_Display);
-        bool CanCast();
+        void OnRender(SDL_Surface *Surf_Display, int CamX, int CamY);
+        static void AddCasted();
         //void Cast()
+        SDL_Surface* GetSpriteSheet() { return DrawSurf;};
 
-        static std::list<Spell*> SpellCasted;
 
 };
 

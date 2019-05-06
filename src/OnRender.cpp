@@ -11,7 +11,7 @@ void App::OnRender(){
     }
 
     for(auto spell : Spell::SpellCasted){
-        spell->OnRender(Surf_Display);
+        spell->OnRender(Surf_Display, CamX, CamY);
     }
 
     GUI::GUIControl.OnRender(Surf_Display);

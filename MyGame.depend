@@ -270,10 +270,10 @@
 1557165514 source:c:\users\dimvy\onedrive\Документы\github\course_game\src\oninit.cpp
 	"../header/App.h"
 
-1557166716 source:c:\users\dimvy\onedrive\Документы\github\course_game\src\onloop.cpp
+1557172171 source:c:\users\dimvy\onedrive\Документы\github\course_game\src\onloop.cpp
 	"../header/App.h"
 
-1557166716 source:c:\users\dimvy\onedrive\Документы\github\course_game\src\onrender.cpp
+1557173649 source:c:\users\dimvy\onedrive\Документы\github\course_game\src\onrender.cpp
 	"../header/App.h"
 
 1557163582 source:c:\users\dimvy\onedrive\Документы\github\course_game\src\app.cpp
@@ -373,10 +373,10 @@
 	"Player.h"
 	"App.h"
 
-1557159237 source:c:\users\dimvy\onedrive\Документы\github\course_game\src\spell.cpp
+1557173993 source:c:\users\dimvy\onedrive\Документы\github\course_game\src\spell.cpp
 	"../header/Spell.h"
 
-1557162604 c:\users\dimvy\onedrive\Документы\github\course_game\header\spell.h
+1557173649 c:\users\dimvy\onedrive\Документы\github\course_game\header\spell.h
 	<SDL.h>
 	<SDL_draw.h>
 	<string>
