@@ -9,9 +9,16 @@ enum    {BOTTOM = 2,
          RIGHT  = 3};
 
 class Creature: public Entity{
+    friend class GUI;
+    friend class Spell;
+
     protected:
-        int             Health;
+        double          Health;
         int             MaxHealth;
+        double          HPRegen;
+        double          Mana;
+        int             MaxMana;
+        double          MPRegen;
 
         double          AngleCos;
         double          Speed;

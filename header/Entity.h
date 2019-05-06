@@ -13,6 +13,8 @@
 #include <SDL_ttf.h>
 
 class Entity {
+    friend class GUI;
+    friend class Spell;
     public:
         //static std::vector<Entity*>    EntityList;
 

@@ -10,6 +10,7 @@
 class Player: public Creature{
     friend class GUI;
     friend class Enemy;
+    friend class Spell;
 
     private:
         int intellect;
@@ -17,7 +18,7 @@ class Player: public Creature{
     public:
         Player();
         bool OnLoad();
-        void OnLoop();
+        void OnLoop(bool _m_b_l);
         void SetSpeed(int X, int Y);
         inline double GetMapX() {return MapX;};
         inline double GetMapY() {return MapY;};

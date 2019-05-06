@@ -2,10 +2,18 @@
 
 void App::OnRender(){
     Map::MapControl.OnRender(Surf_Display, Camera::CameraControl.GetX(), Camera::CameraControl.GetY());
-    Hero.OnRender(Surf_Display, Inter);
+
     for(int i = 0; i < ENEMIES; i++)
         Enemy::EnemyList[i]->OnRender(Surf_Display, Inter);
+
+    Hero.OnRender(Surf_Display, Inter);
+
+    for(auto iter = Spell::SpellCasted.begin(); iter != Spell::SpellCasted.end(); iter++){
+        (*iter)->OnRender(Surf_Display);
+    }
+
     GUI::GUIControl.OnRender(Surf_Display);
+
     /*.........................*/
     loops++;
     if(SDL_GetTicks()-start>1000){
@@ -16,7 +24,7 @@ void App::OnRender(){
     SDL_Surface *message;
     TTF_Font *font;
     SDL_Rect dest = {.x = 100, .y = 100};
-    SDL_Color textColor = {.r = 0, .g = 0, .b = 0};
+    SDL_Color textColor = {.r = 255, .g = 255, .b = 255};
     char str[100];
 
     sprintf(str, "%d", fps);

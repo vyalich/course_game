@@ -12,6 +12,7 @@
 #include "Camera.h"
 #include "Enemy.h"
 #include "GUI.h"
+#include "Spell.h"
 
 class Player;
 
@@ -28,9 +29,11 @@ class App
         Uint32          loops;
         Uint16          fps;
         SDL_Surface     *Surf_Display;       //поверхность экрана
+        SDL_Rect        ClipForDraw;
 
     public:
         static Player   Hero;
+        static SDL_Surface  *ForDraw;
 
 
     public:

@@ -46,6 +46,7 @@
 		<Unit filename="header/GUI.h" />
 		<Unit filename="header/Map.h" />
 		<Unit filename="header/Player.h" />
+		<Unit filename="header/Spell.h" />
 		<Unit filename="header/Surface.h" />
 		<Unit filename="header/Tile.h" />
 		<Unit filename="src/App.cpp" />
@@ -59,11 +60,11 @@
 		<Unit filename="src/Map.cpp" />
 		<Unit filename="src/OnCleanup.cpp" />
 		<Unit filename="src/OnEvent.cpp" />
-		<Unit filename="src/OnExecute.cpp" />
 		<Unit filename="src/OnInit.cpp" />
 		<Unit filename="src/OnLoop.cpp" />
 		<Unit filename="src/OnRender.cpp" />
 		<Unit filename="src/Player.cpp" />
+		<Unit filename="src/Spell.cpp" />
 		<Unit filename="src/Surface.cpp" />
 		<Unit filename="src/Tile.cpp" />
 		<Extensions>

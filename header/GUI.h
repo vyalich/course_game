@@ -5,27 +5,36 @@
 #include <SDL.h>
 #include <SDL_ttf.h>
 #include <string>
+#include <vector>
+#include <fstream>
+#include <iostream>
 #include "Player.h"
 #include "App.h"
 
+enum{   EXP         = 0,
+        HEALTH         ,
+        MANA           ,
+        ENEMY          };
+
 struct Bar{
     int x, y, w, h;
+    Uint32 Color;
     double cur;
     std::string info;
     SDL_Color TextColor;
+    SDL_Surface *Background;
+    bool reversed;
 
-    void Draw(SDL_Surface *Surf_Display, Uint32 color, bool reversed);
-    void RenderText(SDL_Surface *Surf_Display, TTF_Font *Font);
+    void Draw(SDL_Surface *Surf_Display);
+    //void Draw(SDL_Surface *Surf_Display);
+    void RenderText(SDL_Surface *Surf_Display, TTF_Font *Font, int MarginTop);
 };
 
 class GUI{
     private:
-
-        SDL_Surface     *BackGround;
-        Bar             HealthBar;
-        Bar             ExpBar;
-        Bar             ManaBar;
-        TTF_Font        *Font;
+        Bar                 BarList[4];
+        TTF_Font            *Font16;
+        TTF_Font            *Font12;
         //Offsets PlayerFrame;
         //Offsets SkillBar;
         //struct { int x};
@@ -33,11 +42,12 @@ class GUI{
     public:
         static GUI GUIControl;
 
-        GUI(): BackGround(0) { };
+        GUI() {};
 
         void OnInit();
         void OnRender(SDL_Surface *Surf_Display);
         void OnLoop();
+        void OnCleanup();
 
     private:
         void DrawBars(SDL_Surface *Surf_Display);
