@@ -19,12 +19,12 @@ class Player: public Creature{
     public:
         Player();
         bool OnLoad();
-        void OnLoop(bool _m_b_l);
-        void OnRender(SDL_Surface* Surf_Display, double Inter);
+        void OnLoop(bool _m_b_l, double Inter);
         void SetSpeed(int X, int Y);
         inline double GetMapX() {return MapX;};
         inline double GetMapY() {return MapY;};
         virtual SDL_Surface* GetSpriteSheet() { return SpriteSheet;};
+        void MoveCam(double Inter);
 };
 
 #endif // PLAYER_H_INCLUDED

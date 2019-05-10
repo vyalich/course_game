@@ -1,17 +1,18 @@
 #include "../header/App.h"
 
 void App::OnRender(){
+    Hero.MoveCam(Inter);
     Map::MapControl.OnRender(Surf_Display, Camera::CameraControl.GetX(), Camera::CameraControl.GetY());
 
     int CamX = Camera::CameraControl.GetX();
     int CamY = Camera::CameraControl.GetY();
 
     for(auto entity : Entity::OnScreen){
-        entity->OnRender(Surf_Display, CamX, CamY);
+        entity->OnRender(Surf_Display, CamX, CamY, Inter);
     }
 
     for(auto spell : Spell::SpellCasted){
-        spell->OnRender(Surf_Display, CamX, CamY);
+        spell->OnRender(Surf_Display, CamX, CamY, Inter);
     }
 
     GUI::GUIControl.OnRender(Surf_Display);
@@ -27,20 +28,11 @@ void App::OnRender(){
     TTF_Font *font;
     SDL_Rect dest = {.x = 100, .y = 100};
     SDL_Color textColor = {.r = 255, .g = 255, .b = 255};
-    char str[100];
+    std::string str;
 
-    sprintf(str, "%d", fps);
+    str = std::to_string(fps);
     font = TTF_OpenFont("CharisSILR.ttf", 20);
-    message = TTF_RenderText_Solid( font, str, textColor );
-    if(message){
-        SDL_BlitSurface(message, NULL, Surf_Display, &dest);
-        SDL_FreeSurface(message);
-        message = NULL;
-    }
-
-    dest.y +=50;
-    sprintf(str, "%.10lf", Inter);
-    message = TTF_RenderText_Solid( font, str, textColor );
+    message = TTF_RenderText_Solid( font, str.c_str(), textColor );
     if(message){
         SDL_BlitSurface(message, NULL, Surf_Display, &dest);
         SDL_FreeSurface(message);

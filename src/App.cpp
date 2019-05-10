@@ -20,17 +20,24 @@ App::~App()
 
 int App::OnExecute() {
     #define LPS 50
-    #define SKIP 1000/LPS
+    #define SKIP 20.0
     if(OnInit() == false) {
         return -1;
     }
 
     SDL_Event event;
-    //основной игровой циклSurf_Display
+    //основной игровой цикл
+
+
+    Uint32 next_game_tick = SDL_GetTicks();
+
     while(_running){
         LevelInit();
-        Uint32 next_game_tick = SDL_GetTicks();
+
         //основной игровой цикл уровня
+        out.open("log.txt");
+        if(!out)
+            return -10;
         while(_level){
             if(loops == 0)
                 start = SDL_GetTicks();
@@ -40,17 +47,24 @@ int App::OnExecute() {
                     OnEvent(&event);
                 }
                 OnLoop();
-                next_game_tick += SKIP;
-
+                next_game_tick = SDL_GetTicks() + 20;
 
             }
+            Inter = (SDL_GetTicks() + 20 - next_game_tick)/ SKIP;
+
+            out << std::fixed << std::setprecision(6) << Inter << " = " << SDL_GetTicks() << " + 20 - " << next_game_tick << " / " << SKIP << std::endl;;
+
             OnRender();
-            Inter = double(SDL_GetTicks() - next_game_tick + SKIP)/SKIP*10;
+
 
         }
         LevelCleanup();
     }
     OnCleanup();
+
+    out.close();
+
+
     return 0;
 }
 

@@ -9,19 +9,18 @@
 #include "Creature.h"
 #include "Player.h"
 
-class Spell: public Entity{
+class Spell: public Creature{
     private:
-        bool            _exist;
-        int             Cost;
-        Uint16          Speed;
-        double          SpeedX;
-        double          SpeedY;
-        int             TarX;
-        int             TarY;
-        Uint16          CoolDown;
-        Uint16          Range;
-        Uint16          Power;
-        SDL_Surface     *DrawSurf;
+        double                  OldX;
+        double                  OldY;
+        bool                    _exist;
+        static  int             Cost;
+        int                     TarX;
+        int                     TarY;
+        static Uint16           CoolDown;
+        static Uint16           Range;
+        static Uint16           Power;
+        SDL_Surface             *DrawSurf;
 
         static Uint32           LastUsed;
         static std::string      Name;
@@ -35,10 +34,12 @@ class Spell: public Entity{
         ~Spell();
         void OnLoad();
         void OnLoop();
-        void OnRender(SDL_Surface *Surf_Display, int CamX, int CamY);
+        void OnRender(SDL_Surface *Surf_Display, int CamX, int CamY, double Inter);
         static void AddCasted();
         //void Cast()
         SDL_Surface* GetSpriteSheet() { return DrawSurf;};
+        void SetSpeed();
+        void OnMove() override;
 
 
 };

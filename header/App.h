@@ -5,6 +5,9 @@
 #include <SDL_draw.h>
 #include <ctime>
 #include <cstdlib>
+#include <string>
+#include <iomanip>
+#include <fstream>
 #include "Entity.h"
 #include "Player.h"
 #include "Define.h"
@@ -30,6 +33,9 @@ class App
         Uint16          fps;
         SDL_Surface     *Surf_Display;       //поверхность экрана
         SDL_Rect        ClipForDraw;
+
+
+        std::ofstream   out;
 
     public:
         static Player   Hero;

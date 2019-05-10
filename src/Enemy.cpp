@@ -40,13 +40,12 @@ bool Enemy::OnLoad(int speed){
     FrameX = 0;
     FrameY = 2*Height;
     Speed = speed;
-    LastX = MapX = (MAP_W*TILE_SIZE>>1)-(Width>>1)-8*TILE_SIZE + 12*TILE_SIZE;
-    LastY = MapY = (MAP_H*TILE_SIZE>>1)-(Height>>1)+8*TILE_SIZE;
-
+    OldX = LastX = MapX = TILE_SIZE + rand() % (MAP_W - 3) * TILE_SIZE;
+    OldY = LastY = MapY = TILE_SIZE + rand() % (MAP_H - 3) * TILE_SIZE;
 }
 
 
-void Enemy::OnLoop(double PlayerX, double PlayerY, int CamX, int CamY, SDL_Surface *Surf_Display){
+void Enemy::OnLoop(double PlayerX, double PlayerY, int CamX, int CamY, SDL_Surface *Surf_Display, double Inter){
     if(Health < MaxHealth)
         Health += HPRegen;
     else
@@ -92,6 +91,8 @@ void Enemy::OnLoop(double PlayerX, double PlayerY, int CamX, int CamY, SDL_Surfa
     if(_chasing != IDLE){
         if(_chasing != ATTACK && Dist <= AttackRange){
             _chasing = ATTACK;
+            SpeedX = 0;
+            SpeedY = 0;
             FrameX = 0;
             MaxFrames = 6;
             WaitTime = AttackSpeed/MaxFrames;
@@ -123,13 +124,14 @@ void Enemy::OnLoop(double PlayerX, double PlayerY, int CamX, int CamY, SDL_Surfa
             AnimWalk();
             if(abs(MapX - LastX) < TILE_SIZE && abs(MapY - LastY) < TILE_SIZE){
                 _chasing = IDLE;
-                StopMove();
+                StopMove(Inter);
             }
             break;
         case IDLE:
-            StopMove();
+            //StopMove(Inter);
             break;
         case ATTACK:
+
             AnimWalk();
             Attack();
             break;

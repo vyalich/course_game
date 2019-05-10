@@ -25,6 +25,8 @@ class Entity {
     protected:
         double          MapX;
         double          MapY;
+        double          OldX;
+        double          OldY;
 
         int             Width;
         int             Height;
@@ -37,7 +39,8 @@ class Entity {
         Uint32          LastFrameTime;
         int             FrameX;
         int             FrameY;
-
+        double          SpeedX;
+        double          SpeedY;
 
     public:
         Entity();
@@ -46,7 +49,7 @@ class Entity {
 
         virtual void OnLoop();
 
-        void OnRender(SDL_Surface *Surf_Display, int CamX, int CamY);
+        virtual void OnRender(SDL_Surface *Surf_Display, int CamX, int CamY, double Inter);
 
         virtual void OnCleanup();
 

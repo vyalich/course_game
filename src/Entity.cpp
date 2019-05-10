@@ -14,8 +14,9 @@ void Entity::OnLoop(){
 
 }
 
-void Entity::OnRender(SDL_Surface* Surf_Display, int CamX, int CamY){
-    Surface::OnDraw(Surf_Display,  GetSpriteSheet(), MapX-CamX, MapY-CamY, FrameX, FrameY, Width, Height);
+void Entity::OnRender(SDL_Surface* Surf_Display, int CamX, int CamY, double Inter){
+
+    Surface::OnDraw(Surf_Display,  GetSpriteSheet(), OldX + SpeedX*Inter - CamX, OldY + SpeedY*Inter - CamY, FrameX, FrameY, Width, Height);
 }
 
 

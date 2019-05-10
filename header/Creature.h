@@ -24,15 +24,13 @@ class Creature: public Entity{
 
         double          AngleCos;
         double          Speed;
-        double          SpeedX;
-        double          SpeedY;
 
     public:
         Creature();
 
-        void    StopMove();
+        void    StopMove(double Inter);
 
-        void    OnMove();
+        virtual void    OnMove();
 
         void    AnimWalk();
 
@@ -41,9 +39,9 @@ class Creature: public Entity{
     private:
         void    PosValid();
 
-        void    PosValidTileX();
+        bool    PosValidTileX(int l, int r, int t, int d);
 
-        void    PosValidTileY();
+        bool    PosValidTileY(int l, int r, int t, int d);
 
         bool    PosValidEntity(Entity* Entity, int NewX, int NewY);
 
