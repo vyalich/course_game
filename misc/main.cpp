@@ -2,6 +2,7 @@
 #include <ctime>
 #include <cstdlib>
 #include <conio.h>
+#include <fstream>
 #include "Define.h"
 using namespace std;
 
@@ -46,11 +47,12 @@ bool* life_game(bool *MapOld){
 int main()
 {
     srand(time(0));
-    FILE *MapFile;
+    ofstream out("map.dat", ios_base::binary);
+
+    if(!out)
+        return -100;
+
     bool *Map = new bool[MAP_H*MAP_W];
-
-    MapFile = fopen("1.map", "w");
-
     //заполнение карты рандомными клетками
     for(int i = 0; i < MAP_H; i++)
         for(int j = 0; j < MAP_W; j++)
@@ -96,15 +98,17 @@ int main()
                         id += tileset_w;
                     if(j < MAP_W-1 && (!Map[i*MAP_W + j+1] || !Map[(i+1)*MAP_W + j+1] && i < MAP_H-1))
                         id += 2*tileset_w;
-                    fprintf(MapFile, "%d:1 ", id);
+                    int type = 1;
+                    out.write((char*)&id, sizeof(id));
+                    out.write((char*)&type, sizeof(type));
                 }
                 else{
                     id = 0;
-                    fprintf(MapFile, "%d:0 ", id);
+                    out.write((char*)&id, sizeof(id));
+                    out.write((char*)&id, sizeof(id));
                 }
             }
-        fprintf(MapFile, "\n");
     }
-    fclose(MapFile);
+    out.close();
     return 0;
 }
